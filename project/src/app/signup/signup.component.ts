@@ -41,7 +41,7 @@ export class SignupComponent implements OnInit {
   get password(){
     return this.formGroup.get('password')!;
   }
-  storing(formdata:NgForm){
+  storing(){
     // console.log(formdata);
     // this.store.pushData(formdata);
     this.api.add("first-db",this.formGroup.value).subscribe(res=>{
