@@ -1,0 +1,54 @@
+<div class="d-flex justify-content-center">
+  <form [formGroup]="formGroup" (ngSubmit)="storing(this.formGroup.value)">
+    <div class="form-group">
+      <label for="firstName">First Name</label>
+      <input
+        id="firstName"
+        class="form-control"
+        formControlName="firstName"
+        placeholder="FirstName Required"
+        required
+      />
+      <div class="help-block text-danger" *ngIf="firstName.touched">
+        <span *ngIf="firstName.errors?.required">
+          First Name is REQUIRED!!!
+        </span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="lname">Last Name</label>
+      <input id="lname" class="form-control" formControlName="lastName" />
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input
+        id="email"
+        class="form-control"
+        formControlName="email"
+        placeholder="Email (required)"
+      />
+      <div class="help-block text-danger" *ngIf="email.touched">
+        <span *ngIf="email.errors?.required"> Email is REQUIRED!!! </span>
+      </div>
+    </div>
+    
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" class="form-control" formControlName="password" />
+      </div>
+
+    <div class="form-group">
+      <label for="mobile">Mobile Number</label>
+      <input
+        id="mobile"
+        class="form-control"
+        formControlName="mobile"
+        placeholder="Enter your phone #"
+      />
+    </div>
+    <hr />
+    <button class="btn btn-primary">Sign Up</button> <span> Or <button class="btn btn-secondary" routerLink="login">Login</button> </span>
+  </form>
+</div>
