@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {FormGroup,FormBuilder,NgForm} from '@angular/forms';
+import {FormGroup,FormBuilder,NgForm,Validators} from '@angular/forms';
 // import { StoreService } from '../store.service';
-import { ApiService } from '../database.service';
+import { DatabaseService } from '../database.service';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -17,13 +17,13 @@ export class SignupComponent implements OnInit {
     password:'',
     mobile: '',
   };
-  constructor(private fb: FormBuilder,private api:ApiService) {
+  constructor(private fb: FormBuilder,private api:DatabaseService) {
     this.formGroup = this.fb.group({
-      firstName: [this.empRecord.firstName],
-      lastName: [this.empRecord.lastName],
-      email: [this.empRecord.email],
-      password:[this.empRecord.password],
-      mobile: [this.empRecord.mobile],
+      firstName: [this.empRecord.firstName,Validators.required],
+      lastName: [this.empRecord.lastName,Validators.required],
+      email: [this.empRecord.email,Validators.required],
+      password:[this.empRecord.password,Validators.required],
+      mobile: [this.empRecord.mobile,Validators.required],
     });
    }
 
@@ -31,6 +31,9 @@ export class SignupComponent implements OnInit {
   }
   get firstName() {
     return this.formGroup.get('firstName')!;
+  }
+  get lastName() {
+    return this.formGroup.get('lastName')!;
   }
   get email() {
     return this.formGroup.get('email')!;

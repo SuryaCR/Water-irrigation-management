@@ -6,7 +6,7 @@
         id="firstName"
         class="form-control"
         formControlName="firstName"
-        placeholder="FirstName Required"
+        placeholder="Enter FirstName"
         required
       />
       <div class="help-block text-danger" *ngIf="firstName.touched">
@@ -17,8 +17,13 @@
     </div>
 
     <div class="form-group">
-      <label for="lname">Last Name</label>
-      <input id="lname" class="form-control" formControlName="lastName" />
+      <label for="lastName">Last Name</label>
+      <input id="lastName" class="form-control" formControlName="lastName" placeholder="Enter LastName" required/>
+      <div class="help-block text-danger" *ngIf="lastName.touched">
+        <span *ngIf="lastName.errors?.required">
+          Last Name is REQUIRED!!!
+        </span>
+      </div>
     </div>
 
     <div class="form-group">
@@ -27,7 +32,7 @@
         id="email"
         class="form-control"
         formControlName="email"
-        placeholder="Email (required)"
+        placeholder="Enter Email"
       />
       <div class="help-block text-danger" *ngIf="email.touched">
         <span *ngIf="email.errors?.required"> Email is REQUIRED!!! </span>
@@ -37,6 +42,11 @@
     <div class="form-group">
         <label for="password">Password</label>
         <input type="password" id="password" class="form-control" formControlName="password" />
+        <div class="help-block text-danger" *ngIf="password.touched">
+          <span *ngIf="password.errors?.required">
+            Password is REQUIRED!!!
+          </span>
+        </div>
       </div>
 
     <div class="form-group">
@@ -45,10 +55,15 @@
         id="mobile"
         class="form-control"
         formControlName="mobile"
-        placeholder="Enter your phone #"
+        placeholder="Enter your Mobile Number"
       />
+      <div class="help-block text-danger" *ngIf="mobile.touched">
+        <span *ngIf="mobile.errors?.required">
+          Mobile Number is REQUIRED!!!
+        </span>
+      </div>
     </div>
     <hr />
-    <button class="btn btn-primary">Sign Up</button> <span> Or <button class="btn btn-secondary" routerLink="login">Login</button> </span>
+    <button class="btn btn-primary" [disabled]="!formGroup.valid">Sign Up</button> <span> Or <button class="btn btn-secondary" routerLink="login">Login</button> </span>
   </form>
 </div>
