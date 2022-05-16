@@ -33,6 +33,7 @@
         class="form-control"
         formControlName="email"
         placeholder="Enter Email"
+        required
       />
       <div class="help-block text-danger" *ngIf="email.touched">
         <span *ngIf="email.errors?.required"> Email is REQUIRED!!! </span>
@@ -41,7 +42,7 @@
     
     <div class="form-group">
         <label for="password">Password</label>
-        <input type="password" id="password" class="form-control" formControlName="password" />
+        <input type="password" id="password" class="form-control" formControlName="password" required/>
         <div class="help-block text-danger" *ngIf="password.touched">
           <span *ngIf="password.errors?.required">
             Password is REQUIRED!!!
@@ -64,6 +65,25 @@
       </div>
     </div>
     <hr />
-    <button class="btn btn-primary" [disabled]="!formGroup.valid">Sign Up</button> <span> Or <button class="btn btn-secondary" routerLink="login">Login</button> </span>
+    <button class="btn btn-primary" [disabled]="!formGroup.valid">Sign Up</button> <span> Or  </span>
   </form>
+</div><br>
+<button class="btn btn-secondary"> <a routerLink="/login"> Login</a></button>
+
+<div>
+  <table>
+      <thead>
+          <tr>
+              <td>First Name</td>
+              <td>Last Name</td>
+              <td>Email</td>
+              <td>Mobile</td>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let item of customer">
+              <td>{{item.customer}}</td>
+          </tr>
+      </tbody>
+  </table>
 </div>

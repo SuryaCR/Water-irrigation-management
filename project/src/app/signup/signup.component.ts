@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormGroup,FormBuilder,NgForm,Validators} from '@angular/forms';
 // import { StoreService } from '../store.service';
 import { DatabaseService } from '../database.service';
+
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -15,8 +16,17 @@ export class SignupComponent implements OnInit {
     lastName: '',
     email: '',
     password:'',
-    mobile: '',
+    mobile: '', 
   };
+   
+  customer:any={
+    firstName: '',
+    lastName: '',
+    email: '',
+    password:'',
+    mobile: '', 
+  };
+
   constructor(private fb: FormBuilder,private api:DatabaseService) {
     this.formGroup = this.fb.group({
       firstName: [this.empRecord.firstName,Validators.required],
@@ -50,18 +60,18 @@ export class SignupComponent implements OnInit {
     this.api.add("first-db",this.formGroup.value).subscribe(res=>{
       console.log(res);
       alert("Your data was posted successfully!");
-      this.empRecord.reset();
     },rej=>{
-      alert("opps! Can not post data"+rej);
+      alert("Can not post data"+rej);
     });
     this.api.get("first-db").subscribe(res=>{
       console.log(res);
-      alert("Your data was posted successfully!");
-      this.empRecord.reset();
-    },rej=>{
-      alert("opps! Can not post data"+rej);
+      alert("Your data retrieved successfully!");
+      // this.customer = res[''].(map(e =>e.doc));
+    },rej=>{ 
+      alert("Can not retrieved data"+rej);
     });
 
     
   }
+ 
 }

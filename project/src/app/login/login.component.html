@@ -1,1 +1,31 @@
-<p>login works!</p>
+<div class="d-flex justify-content-center">
+    <form [formGroup]="formGroup" (ngSubmit)="loginUser()">
+      
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          id="email"
+          class="form-control"
+          formControlName="email"
+          placeholder="Enter Email"
+          required
+        />
+        <!-- <div class="help-block text-danger" *ngIf="email.touched">
+          <span *ngIf="email.errors?.required"> Email is REQUIRED!!! </span>
+        </div> -->
+      </div>
+      
+      <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" class="form-control" formControlName="password" required/>
+          <!-- <div class="help-block text-danger" *ngIf="password.touched">
+            <span *ngIf="password.errors?.required">
+              Password is REQUIRED!!!
+            </span>
+          </div> -->
+        </div>
+      <hr />
+      <button class="btn btn-primary" [disabled]="!formGroup.valid">Login</button>
+    </form>
+  </div>
+  

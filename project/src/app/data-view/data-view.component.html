@@ -1,0 +1,20 @@
+<div>
+    <table>
+        <thead>
+            <tr>
+                <td>First Name</td>
+                <td>Last Name</td>
+                <td>Email</td>
+                <td>Mobile</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item in customer">
+                <td>{{item.firstName}}</td>
+                <td>{{item.lastName}}</td>
+                <td>{{item.email}}</td>
+                <td>{{item.mobile}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

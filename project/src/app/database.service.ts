@@ -11,6 +11,14 @@ export class DatabaseService {
   dbPassword = 'f56766c5716a7b37a531aaa7bdb53315';
   basicAuth = 'Basic ' + btoa(this.dbUserName + ':' + this.dbPassword);
   
+  empRecord: any = {
+    firstName: '',
+    lastName: '',
+    email: '',
+    password:'',
+    mobile: '',
+  };
+
   constructor(private http:HttpClient) { }
   
   httpOptions = {
@@ -23,11 +31,22 @@ export class DatabaseService {
   add(db: string, doc: object): Observable<{}> {
     // const url2 = `${this.url}${db}`;
     const url=this.url+db;
-    return this.http.post(url, doc, this.httpOptions)
+    return this.http.post(url, doc, this.httpOptions);
   }
-  get(db:string): Observable<{}>{
+  get(db:string): Observable<{}>  {
     const url = this.url+db+'/_all_docs?include_docs=true';
-    return this.http.get(url,this.httpOptions)
+    return this.http.get(url,this.httpOptions);
 
+  }
+  login(db:string,email:string,password:string): Observable<{}>{
+    const url = this.url+db+'/_find';
+    let database={
+      selector:{
+        email:email,
+        password:password
+      },
+      fields:["id","firstName","email","mobile"]
+    };
+    return this.http.post(url,database);
   }
 }
