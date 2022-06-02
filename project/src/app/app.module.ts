@@ -23,6 +23,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
 import { AdditionalInfoComponent } from './additional-info/additional-info.component';
 import { IrrigationManageComponent } from './irrigation-manage/irrigation-manage.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { IrrigationManageComponent } from './irrigation-manage/irrigation-manage
     WaterManageComponent,
     AdditionalInfoComponent,
     IrrigationManageComponent,
+    DashboardComponent,
 
   ],
   imports: [

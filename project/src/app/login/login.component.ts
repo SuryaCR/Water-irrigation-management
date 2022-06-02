@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
 
         // localStorage.setItem('userValue', this._id);
         console.log('success');
-      this.router.navigate(['/dataview'],{queryParams:{data:this._id}})
+      this.router.navigate(['/dashboard'],{queryParams:{data:this._id}})
       }
       else {
         console.log('error');

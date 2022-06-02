@@ -75,8 +75,8 @@ export class DatabaseService {
     return this.http.get(url,this.httpOptions);
 
   }
-  getData(db:string){
-    const url=this.url+db;
+  getData(db:string, id:any){
+    const url=this.url+db+'/'+id;
     return this.http.get(url,this.httpOptions);
   }
   userLogin(email: any, password: any) {

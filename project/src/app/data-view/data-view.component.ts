@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DatabaseService } from '../database.service';
-import { ActivatedRoute,Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-data-view',
@@ -8,22 +8,24 @@ import { ActivatedRoute,Router } from '@angular/router';
   styleUrls: ['./data-view.component.css']
 })
 export class DataViewComponent implements OnInit {
-
-  alldata:any;
-  object:any=[];
   user: any;
-  constructor(private acrouter:ActivatedRoute,private router:Router) { }
+  value:any=[];
+
+ 
+  constructor(private api:DatabaseService,private acrouter:ActivatedRoute) { }
 
   ngOnInit(): void {
     this.acrouter.queryParams.subscribe(res=>{
       this.user=res.data
     })
+ 
+
   }
-  watermanage(){
-    this.router.navigate(['watermanage'],{queryParams:{data:this.user}})
-  }
-  irrigation(){
-    this.router.navigate(['userdata'],{queryParams:{data:this.user}})
+
+  get(){
+    this.api.getData("first-db",this.user).subscribe(data=>{
+        this.value= data;
+    });
   }
 
 }
