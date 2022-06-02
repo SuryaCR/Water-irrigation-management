@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import{HttpClient,HttpHeaders} from '@angular/common/http';
-import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,16 +10,20 @@ export class DatabaseService {
   dbPassword = 'f56766c5716a7b37a531aaa7bdb53315';
   basicAuth = 'Basic ' + btoa(this.dbUserName + ':' + this.dbPassword);
   
-  empRecord: any = {
-    firstName: '',
-    lastName: '',
-    email: '',
-    password:'',
-    mobile: '',
-  };
+  // empRecord: any = {
+  //   firstName: '',
+  //   lastName: '',
+  //   email: '',
+  //   password:'',
+  //   mobile: '',
+  // };
 
   constructor(private http:HttpClient) { }
   
+  public localData = localStorage.getItem("userValue");
+  public waterLitres = localStorage.getItem("waterLitres");
+  public Irrigationvalue = localStorage.getItem("Irrigationvalue");
+
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -28,25 +31,60 @@ export class DatabaseService {
     })
   };
 
-  add(db: string, doc: object): Observable<{}> {
-    // const url2 = `${this.url}${db}`;
+  store(formdata:any,id:any){
+    let data={
+      "Water":formdata['waters'],
+      "type":"watermanage",
+      "user":id
+    }
+    const url=this.url+'first-db';
+    return this.http.post(url,data,this.httpOptions);
+  }
+
+  store1(formdata:any,id:any){
+    let data={
+      "Acres":formdata['acres'],
+      "Hours":formdata['hours'],
+      "Crops":formdata['crops'],
+      "Water_Litres":this.waterLitres,
+      "type":"irrigation",
+      "user":id
+    }
+    const url=this.url+'first-db';
+    return this.http.post(url,data,this.httpOptions);
+  }
+
+  store2(formdata:any,id:any){
+    let data={
+      "Soil":formdata['soil'],
+      "Address":formdata['address'],
+      "type":"additional_Info",
+      "irrigation":id
+    }
+    const url=this.url+'first-db';
+    return this.http.post(url,data,this.httpOptions);
+  }
+
+  add(db: string, doc: object){
     const url=this.url+db;
     return this.http.post(url, doc, this.httpOptions);
+
   }
-  get(db:string): Observable<{}>  {
+  get(db:string){
     const url = this.url+db+'/_all_docs?include_docs=true';
     return this.http.get(url,this.httpOptions);
 
   }
-  login(db:string,email:string,password:string): Observable<{}>{
-    const url = this.url+db+'/_find';
-    let database={
-      selector:{
-        email:email,
-        password:password
-      },
-      fields:["id","firstName","email","mobile"]
-    };
-    return this.http.post(url,database);
+  getData(db:string){
+    const url=this.url+db;
+    return this.http.get(url,this.httpOptions);
   }
+  userLogin(email: any, password: any) {
+    return this.http.get<any>('http://localhost:8000/getdata/' + email);
+  }
+
+  userEmail(email:any){
+    return this.http.get<any>('http://localhost:8000/getdata/' + email);
+  }
+
 }

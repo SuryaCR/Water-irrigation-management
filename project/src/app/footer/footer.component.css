@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:wght@700&display=swap');
+
+.wrapper{
+    width:80%;
+    margin:0 auto;
+    height: 10%;
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding:3rem 0;
+}
+.container-block{
+    width:100%;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding:8em 5em 4em 5em;
+}
+.container p{
+    width:90%;
+}
+
+footer{
+    background-color: hsl(192, 100%, 9%);
+    color:white;
+    height: fit-content;    
+}
+footer h1{
+    font-size: 2.5rem;
+}
+footer h1, footer h3{
+    color:white;
+}
+footer .container p{
+    width:65%;
+    color:white;
+}
+footer .contact{
+    display: flex;
+    width: 50%;
+}
+footer .contact img{
+    width: 20px;
+    height: 20px;
+}
+footer .container > *{
+    padding:0 0 1rem 0;
+}
+footer .socials{
+    width:30px;
+    height:30px;
+    margin-right: .5em;
+    cursor: pointer;
+}
+footer .socials{
+    position:absolute;
+    bottom:.5rem;
+    width: 50%;
+}
+
+footer{
+    position:relative;
+}
+
+
+@media (max-width:900px){
+    .container p,h2{
+        width:100%;
+        text-align: center;
+    }
+    .wrapper{
+        width:90%;
+        flex-direction: column;
+    }
+    .container-block{
+        padding:5em 0 3em 0;
+        width:90%;
+    }
+
+}

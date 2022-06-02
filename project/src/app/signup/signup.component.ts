@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormGroup,FormBuilder,NgForm,Validators} from '@angular/forms';
 // import { StoreService } from '../store.service';
 import { DatabaseService } from '../database.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -11,34 +12,33 @@ import { DatabaseService } from '../database.service';
 export class SignupComponent implements OnInit {
 
   formGroup: FormGroup;
-  empRecord: any = {
+  record: any = {
     firstName: '',
     lastName: '',
     email: '',
     password:'',
     mobile: '', 
+    type:'user'
   };
-   
-  customer:any={
-    firstName: '',
-    lastName: '',
-    email: '',
-    password:'',
-    mobile: '', 
-  };
-
-  constructor(private fb: FormBuilder,private api:DatabaseService) {
+  customer:any;
+  value: any;
+  array: any;
+  private _id: any;
+  
+  constructor(private fb: FormBuilder,public api:DatabaseService,private router:Router) {
     this.formGroup = this.fb.group({
-      firstName: [this.empRecord.firstName,Validators.required],
-      lastName: [this.empRecord.lastName,Validators.required],
-      email: [this.empRecord.email,Validators.required],
-      password:[this.empRecord.password,Validators.required],
-      mobile: [this.empRecord.mobile,Validators.required],
+      firstName: [this.record.firstName,[Validators.required,Validators.minLength(3)]],
+      lastName: [this.record.lastName,Validators.required],
+      email: [this.record.email,Validators.required],
+      password:[this.record.password,[Validators.required,Validators.minLength(6)]],
+      mobile: [this.record.mobile,[Validators.required,Validators.minLength(10),Validators.min(6000000000)]],
+      type:'user',
     });
    }
 
   ngOnInit(): void {
   }
+
   get firstName() {
     return this.formGroup.get('firstName')!;
   }
@@ -54,24 +54,21 @@ export class SignupComponent implements OnInit {
   get password(){
     return this.formGroup.get('password')!;
   }
+
   storing(){
     // console.log(formdata);
     // this.store.pushData(formdata);
+
     this.api.add("first-db",this.formGroup.value).subscribe(res=>{
-      console.log(res);
-      alert("Your data was posted successfully!");
+      console.log("Your data was posted successfully!");
+      this.router.navigate(['/login']);
+
     },rej=>{
-      alert("Can not post data"+rej);
-    });
-    this.api.get("first-db").subscribe(res=>{
-      console.log(res);
-      alert("Your data retrieved successfully!");
-      // this.customer = res[''].(map(e =>e.doc));
-    },rej=>{ 
-      alert("Can not retrieved data"+rej);
+      console.log("Can not post data"+rej);
     });
 
-    
+
+
   }
- 
+
 }

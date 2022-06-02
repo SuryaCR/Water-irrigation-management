@@ -1,25 +1,10 @@
 import { Injectable } from '@angular/core';
-
+import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
 export class StoreService {
-
-  empRecord:any[]=[{
-  firstName : "",
-  lastName : "",
-  mobile : "",
-  password:"",
-  email : "",
+  constructor(private http:HttpClient){
+    
   }
-  
-  ];
-
-  newrecord:any[] = [];
-  constructor() { }
-  pushData(data:any = {}) {
-   this.newrecord.push(data);
-    console.log("after Pushing" , this.newrecord);
-
-}
 }

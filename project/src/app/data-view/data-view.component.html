@@ -1,20 +1,44 @@
-<div>
-    <table>
-        <thead>
-            <tr>
-                <td>First Name</td>
-                <td>Last Name</td>
-                <td>Email</td>
-                <td>Mobile</td>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let item in customer">
-                <td>{{item.firstName}}</td>
-                <td>{{item.lastName}}</td>
-                <td>{{item.email}}</td>
-                <td>{{item.mobile}}</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+  <section id="section2">
+    <div class="wrapper">
+      <img class="big-screen" src="../../images/istockphoto-638155104-170667a.jpg" alt="mainpicture">
+    </div>
+  </section>
+  
+  <section id="section4">
+    <div class="curve-top1"></div>
+    <div class="wrapper">
+      <div class="container">
+        <h2>Water Management</h2>
+        <p>Water management is the control and movement of water resources to minimize damage to life and property and to maximize efficient beneficial use.
+           Good water management of dams and levees reduces the risk of harm due to flooding.</p><br>
+        <button class="btn btn-primary" (click)="watermanage()">Water Management</button>
+      </div>
+      <img class="img" src="../../images/get-low-cost-irrigation-software-development.png" alt="irrigation">
+    </div>
+  </section>
+
+  <section id="section5">
+    <div class="wrapper">
+      <img class="img" src="../../images/pivot-sprinkler-system-e1569274671323.jpg" alt="irrigation">
+      <div class="container">
+        <h2>Water Irrigation Level</h2>
+        <p>Irrigation water has an RSC 8.5 meq l−1 and it needs to be reduced to 2.5 meq l−1. 
+          The water required for irrigation is 800 mm per hectare for the complete growing period of the sorghum crop.</p><br>
+        <button class="btn btn-primary" (click)="irrigation()">Water Irrigation Level</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- <section id="section6">
+    <div class="curve-top2"></div>
+    <div class="wrapper">
+      <div class="container">
+        <h2>Additional Info</h2>
+        <p>It takes no time at all to integrate Huddle with your app's authentication solution. This means, 
+          once signed in to your app, your users can start chatting immediately.</p><br>
+        <a routerLink="/additionalinfo">Additional Info</a>
+      </div>
+      <img class="img" src="../../images/Water irrigation.jpg" alt="irrigation">
+    </div>
+  </section> -->
+
