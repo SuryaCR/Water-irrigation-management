@@ -69,6 +69,7 @@ export class IrrigationManageComponent implements OnInit {
         break;
     }
     localStorage.setItem('waterLitres', JSON.stringify(this.waterLitres));
+    this.savedata();
   }
   
   savedata(){
@@ -77,7 +78,6 @@ export class IrrigationManageComponent implements OnInit {
       this.value = res;
       this.array = this.value.id;
       this.router.navigate(['additionalinfo'],{queryParams:{data:this.array}})
-      
       localStorage.setItem('Irrigationvalue',this.array);
 
     },rej=>{

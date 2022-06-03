@@ -1,8 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:wght@700&display=swap');
-/* *{
-    margin:0;
-    padding:0;
-} */
+
 html,body{
     line-height: 1.6;
     font-family: 'Open Sans', sans-serif;
@@ -123,7 +120,6 @@ nav{
     justify-content: space-around;
     padding:3rem 7rem 0 7rem;
 }
-
 
 @media (max-width:900px){
     .container p,h2{

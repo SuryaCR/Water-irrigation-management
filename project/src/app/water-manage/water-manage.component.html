@@ -1,56 +1,56 @@
-<section id="section4">
-    <div class="curve-top1"></div>
-    <div class="wrapper">
-      <div class="container">
-        <h2>Water Management</h2>
-        <p>Water management is the control and movement of water resources to minimize damage to life and property and to maximize efficient beneficial use.
-           Good water management of dams and levees reduces the risk of harm due to flooding.</p><br>
-           <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Update Data</button>
+ <div class="d-flex justify-content-center form">
+    <form [formGroup]="formGroup">
+      <h2>User Value</h2>
+      <hr>
+      <div class="form-group">
+        <label for="waters">Water for Food Crops</label>
+        <input
+          id="waters"
+          class="form-control"
+          formControlName="waters"
+          placeholder="Enter Total Litres Of Water"
+          required
+        />
+        <div class="help-block text-danger" *ngIf="waters.touched">
+          <span *ngIf="waters.errors?.required">
+            Total Water is REQUIRED!!!
+          </span>
+        </div>
+      </div><br>
+      <div class="form-group">
+        <label for="waters_tree">Water for Trees</label>
+        <input
+          id="waters_tree"
+          class="form-control"
+          formControlName="waters_tree"
+          placeholder="Enter Total Litres Of Water"
+          required
+        />
+        <div class="help-block text-danger" *ngIf="waters_tree.touched">
+          <span *ngIf="waters_tree.errors?.required">
+            Total Water is REQUIRED!!!
+          </span>
+        </div>
+      </div><br>
+      <div class="form-group">
+        <label for="waters_non">Water for Non-Food Crops</label>
+        <input
+          id="waters_non"
+          class="form-control"
+          formControlName="waters_non"
+          placeholder="Enter Total Litres Of Water"
+          required
+        />
+        <div class="help-block text-danger" *ngIf="waters_non.touched">
+          <span *ngIf="waters_non.errors?.required">
+            Total Water is REQUIRED!!!
+          </span>
+        </div>
+      </div><br>
+      <div class="d-flex justify-content-center">
+        <button class="btn btn-primary" (click)="showdata()">Save</button>
       </div>
-      <img class="img" src="../../images/get-low-cost-irrigation-software-development.png" alt="irrigation">
+      </form>
     </div>
-  </section>
-
-
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Water Management</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <div class="d-flex justify-content-center form">
-            <form [formGroup]="formGroup">
-              <h2>User Value</h2>
-              <hr>
-              <div class="form-group">
-                <label for="waters">Total Litres Of Water</label>
-                <input
-                  id="waters"
-                  class="form-control"
-                  formControlName="waters"
-                  placeholder="Enter Total Litres Of Water"
-                  required
-                />
-                <div class="help-block text-danger" *ngIf="waters.touched">
-                  <span *ngIf="waters.errors?.required">
-                    Total Water is REQUIRED!!!
-                  </span>
-                </div>
-              </div><br>
-              <div class="d-flex justify-content-center">
-                <button class="btn btn-primary" (click)="showdata()">Save</button>
-              </div>
-              </form>
-            </div>
-          
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
+  
   

@@ -18,13 +18,18 @@ export class WaterManageComponent implements OnInit {
 
   record: any = {
     waters: '',
+    waters_tree:'',
+    waters_non:'',
   };
   user: any;
+  value: any;
+  array: any;
 
   constructor(private api:DatabaseService,private fb:FormBuilder,private acrouter:ActivatedRoute) { 
     this.formGroup = this.fb.group({
       waters: [this.record.waters,Validators.required],
-      type:'water',
+      waters_tree: [this.record.waters_tree,Validators.required],
+      waters_non: [this.record.waters_non,Validators.required],
     });
   }
 
@@ -35,6 +40,9 @@ export class WaterManageComponent implements OnInit {
   }
   showdata(){
     this.api.store(this.formGroup.value,this.user).subscribe(res=>{
+      this.value = res;
+      this.array = this.value.id;
+      localStorage.setItem('WaterManage',this.array);
       console.log("Your data was posted successfully!");
     },rej=>{
       console.log("Can not post data"+rej);
@@ -43,5 +51,11 @@ export class WaterManageComponent implements OnInit {
 
   get waters() {
     return this.formGroup.get('waters')!;
+  }
+  get waters_tree(){
+    return this.formGroup.get('waters_tree')!;
+  }
+  get waters_non(){
+    return this.formGroup.get('waters_non')!;
   }
 }

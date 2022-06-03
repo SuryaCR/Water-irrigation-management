@@ -18,9 +18,6 @@ import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common
 import { DataViewComponent } from './data-view/data-view.component';
 import { WaterManageComponent } from './water-manage/water-manage.component';
 
-import { HttpCallInterceptor } from 'src/app/interceptor';
-import { ToastrModule } from 'ngx-toastr';
-import { CommonModule } from '@angular/common';
 import { AdditionalInfoComponent } from './additional-info/additional-info.component';
 import { IrrigationManageComponent } from './irrigation-manage/irrigation-manage.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -50,15 +47,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    CommonModule,
-    BrowserAnimationsModule, // required animations module
-    ToastrModule.forRoot(),
+   
   ],
-  providers: [{
-    provide: HTTP_INTERCEPTORS,
-    useClass: HttpCallInterceptor,
-    multi: true
-  }],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

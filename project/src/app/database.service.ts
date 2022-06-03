@@ -20,10 +20,6 @@ export class DatabaseService {
 
   constructor(private http:HttpClient) { }
   
-  public localData = localStorage.getItem("userValue");
-  public waterLitres = localStorage.getItem("waterLitres");
-  public Irrigationvalue = localStorage.getItem("Irrigationvalue");
-
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -33,7 +29,9 @@ export class DatabaseService {
 
   store(formdata:any,id:any){
     let data={
-      "Water":formdata['waters'],
+      "Water_food":formdata['waters'],
+      "Water_tree":formdata['waters_tree'],
+      "Water_non_food":formdata['waters_non'],
       "type":"watermanage",
       "user":id
     }
@@ -42,11 +40,12 @@ export class DatabaseService {
   }
 
   store1(formdata:any,id:any){
+  const waterLitres = localStorage.getItem("waterLitres");
     let data={
       "Acres":formdata['acres'],
       "Hours":formdata['hours'],
       "Crops":formdata['crops'],
-      "Water_Litres":this.waterLitres,
+      "Water_Litres":waterLitres,
       "type":"irrigation",
       "user":id
     }
@@ -82,9 +81,11 @@ export class DatabaseService {
   userLogin(email: any, password: any) {
     return this.http.get<any>('http://localhost:8000/getdata/' + email);
   }
-
-  userEmail(email:any){
-    return this.http.get<any>('http://localhost:8000/getdata/' + email);
+  fetch(db:any,type:string,id:any){
+    const url=this.url+db+'/'+ '_design/' +'newview/' + '_view/' + 'index-view' + '?include_docs=true';
+    const doc ={
+      "keys":[type+id]
+    }
+    return this.http.post(url,doc,this.httpOptions);
   }
-
 }

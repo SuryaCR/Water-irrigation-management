@@ -1,49 +1,24 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:wght@700&display=swap');
-html,body{
-    font-family: sans-serif;
-    line-height: 1.6;
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 600;
+a{
+    color: white;
+    text-decoration: none;
 }
-
 h2{
-    padding:1em 0;
-    font-size: clamp(2rem,2.5vw,2.5rem);
-}
-p{
-    color:rgba(0, 0, 0, 0.705);
-    font-size: clamp(.9rem,1.125vw,1.125rem);
-}
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    text-align: center;
 
-.wrapper{
-    width:80%;
-    margin:0 auto;
-    display:flex;
-    flex-direction: row;
+}
+form{
+   
+    /* text-align: center; */
+    margin-top: 20px;
+    width: 40%;
+}
+label{
+    font-weight: bold;
+    font-size: medium;
+}
+.form-group{
+    /* display: flex; */
     justify-content: center;
-    align-items: center;
-    padding:3rem 0;
-}
-
-@media (max-width:900px){
-    .container p,h2{
-        width:100%;
-        text-align: center;
-    }
-    .wrapper{
-        width:90%;
-        flex-direction: column;
-    }
-    .container-block{
-        padding:5em 0 3em 0;
-        width:90%;
-    }
-    .container, .img{
-        width:100%;
-    }
-    .img{
-        order:-1;
-    }
-   
-   
 }

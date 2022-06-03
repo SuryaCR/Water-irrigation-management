@@ -1,0 +1,25 @@
+a{
+    color: white;
+    text-decoration: none;
+}
+h2{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    text-align: center;
+
+}
+form{
+   
+    margin-top: 20px;
+    width: 40%;
+}
+label{
+    font-weight: bold;
+    font-size: medium;
+}
+.form-group{
+    /* display: flex; */
+    justify-content: center;
+}
+
+
