@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-center form">
-  <form [formGroup]="formGroup" (ngSubmit)="storing()">
+  <form [formGroup]="formGroup" (ngSubmit)="addUserData()">
     <h2>Sign Up</h2>
     <hr>
     <div class="form-group">
@@ -91,7 +91,7 @@
     </div><br>
     <hr />
     <div class="d-flex justify-content-center">
-    <button class="btn btn-primary" [disabled]="!formGroup.valid">
+    <button class="btn btn-primary">
       Sign Up
     </button>
     &nbsp;&nbsp;&nbsp;

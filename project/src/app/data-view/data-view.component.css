@@ -18,3 +18,11 @@ table, td, th {
   button{
       margin-left: 10px;
   }
+  input{
+    width: 30%;
+  }
+  label{
+    font-size: medium;
+    font-weight: bold;
+    margin-left: 43%;
+  }

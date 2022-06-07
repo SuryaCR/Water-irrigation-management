@@ -11,20 +11,14 @@
           placeholder="Enter Email"
           required
         />
-        <!-- <div class="help-block text-danger">
-          <span *ngIf="email.errors?.required"> Email is REQUIRED!!! </span>
-        </div> -->
       </div>
       
       <div class="form-group">
           <label for="password">Password</label>
           <input type="password" id="password" class="form-control" formControlName="password" required/>
-          <!-- <div class="help-block text-danger" *ngIf="password.touched">
-            <span *ngIf="password.errors?.required"> Password is REQUIRED!!! </span>
-          </div> -->
         </div>
       <hr />
-      <button class="btn btn-primary" [disabled]="!formGroup.valid" (click)="login(formGroup.value)">Log In</button>
+      <button class="btn btn-primary" (click)="userLogin(formGroup.value)">Log In</button>
     </form>
   </div>
   

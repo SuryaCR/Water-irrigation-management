@@ -9,7 +9,7 @@ export class DatabaseService {
   dbUserName = 'apikey-v2-1xzbb618xtgfg14nm7uasm9coajsc9dzzpg8p57atbtg';
   dbPassword = 'f56766c5716a7b37a531aaa7bdb53315';
   basicAuth = 'Basic ' + btoa(this.dbUserName + ':' + this.dbPassword);
-  
+  dbName = 'first-db';
   // empRecord: any = {
   //   firstName: '',
   //   lastName: '',
@@ -27,7 +27,7 @@ export class DatabaseService {
     })
   };
 
-  store(formdata:any,id:any){
+  addWaterData(formdata:any,id:any){
     let data={
       "Water_food":formdata['waters'],
       "Water_tree":formdata['waters_tree'],
@@ -35,11 +35,11 @@ export class DatabaseService {
       "type":"watermanage",
       "user":id
     }
-    const url=this.url+'first-db';
+    const url=this.url+this.dbName;
     return this.http.post(url,data,this.httpOptions);
   }
 
-  store1(formdata:any,id:any){
+  addIrrigationData(formdata:any,id:any){
   const waterLitres = localStorage.getItem("waterLitres");
     let data={
       "Acres":formdata['acres'],
@@ -49,43 +49,56 @@ export class DatabaseService {
       "type":"irrigation",
       "user":id
     }
-    const url=this.url+'first-db';
+    const url=this.url+this.dbName;
     return this.http.post(url,data,this.httpOptions);
   }
 
-  store2(formdata:any,id:any){
+  addAdditionalInfo(formdata:any,id:any){
     let data={
       "Soil":formdata['soil'],
       "Address":formdata['address'],
       "type":"additional_Info",
       "irrigation":id
     }
-    const url=this.url+'first-db';
+    const url=this.url+this.dbName;
     return this.http.post(url,data,this.httpOptions);
   }
 
-  add(db: string, doc: object){
-    const url=this.url+db;
+  addUser(doc: object){
+    const url=this.url+this.dbName;
     return this.http.post(url, doc, this.httpOptions);
 
   }
-  get(db:string){
-    const url = this.url+db+'/_all_docs?include_docs=true';
+  getUserData(){
+    const url = this.url+this.dbName+'/_all_docs?include_docs=true';
     return this.http.get(url,this.httpOptions);
 
   }
-  getData(db:string, id:any){
-    const url=this.url+db+'/'+id;
+  getUserDataById(id:any){
+    const url=this.url+this.dbName+'/'+id;
     return this.http.get(url,this.httpOptions);
   }
-  userLogin(email: any, password: any) {
+  loginUser(email:any) {
     return this.http.get<any>('http://localhost:8000/getdata/' + email);
   }
-  fetch(db:any,type:string,id:any){
-    const url=this.url+db+'/'+ '_design/' +'newview/' + '_view/' + 'index-view' + '?include_docs=true';
+  fetchDataByType(type:string,id:any){
+    const url=this.url+this.dbName+'/'+ '_design/' +'newview/' + '_view/' + 'index-view' + '?include_docs=true';
     const doc ={
       "keys":[type+id]
     }
     return this.http.post(url,doc,this.httpOptions);
+  }
+  updateWaterData(id:any,rev:any,user:any){
+    let data={
+      "_id":id,
+      "_rev":rev,
+      "Water_food":localStorage.getItem('updatedData'),
+      "Water_tree":"7000",
+      "Water_non_food":"7000",
+      "type":"watermanage",
+      "user":user,
+    }
+    const url=this.url+this.dbName;
+    return this.http.post<any>(url,data,this.httpOptions);
   }
 }

@@ -42,9 +42,9 @@ export class AdditionalInfoComponent implements OnInit {
   get address() {
     return this.formGroup.get('address')!;
   }
-  store(){
-    this.api.store2(this.formGroup.value,this.irrigation).subscribe(res=>{
-      console.log("Your data was posted successfully!");
+  addAdditionalData(){
+    this.api.addAdditionalInfo(this.formGroup.value,this.irrigation).subscribe(res=>{
+      console.log("Your data was posted successfully!"+res);
     },rej=>{
       console.log("Can not post data"+rej);
     });

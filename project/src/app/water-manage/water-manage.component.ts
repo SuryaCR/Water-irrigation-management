@@ -1,9 +1,8 @@
-import { createOfflineCompileUrlResolver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder,Validators,FormGroup } from '@angular/forms';
 import { DatabaseService } from '../database.service';
 import { ActivatedRoute } from '@angular/router';
-
+import {ToastrService} from 'ngx-toastr';
 @Component({
   selector: 'app-water-manage',
   templateUrl: './water-manage.component.html',
@@ -24,8 +23,12 @@ export class WaterManageComponent implements OnInit {
   user: any;
   value: any;
   array: any;
+  watermanage_value: any;
+  watermanage_value1: any;
+  watermanage_id: any;
+  watermanage_rev: any;
 
-  constructor(private api:DatabaseService,private fb:FormBuilder,private acrouter:ActivatedRoute) { 
+  constructor(private api:DatabaseService,private fb:FormBuilder,private acrouter:ActivatedRoute,private toastr:ToastrService) { 
     this.formGroup = this.fb.group({
       waters: [this.record.waters,Validators.required],
       waters_tree: [this.record.waters_tree,Validators.required],
@@ -38,15 +41,31 @@ export class WaterManageComponent implements OnInit {
       this.user=res.data
     })
   }
-  showdata(){
-    this.api.store(this.formGroup.value,this.user).subscribe(res=>{
+  addWaterInfo(){
+    this.api.addWaterData(this.formGroup.value,this.user).subscribe(res=>{
       this.value = res;
       this.array = this.value.id;
       localStorage.setItem('WaterManage',this.array);
-      console.log("Your data was posted successfully!");
+      this.toastr.success("success","Data Posted");
     },rej=>{
-      console.log("Can not post data"+rej);
+      this.toastr.error("error","Data Not Posted"+rej);
+
     });
+   this.getWaterData();
+  }
+  getWaterData(){
+    this.api.fetchDataByType("watermanage",this.user).subscribe(data=>{
+      console.log(data);
+      this.watermanage_value = data;
+         this.watermanage_value=this.watermanage_value.rows
+         this.watermanage_value1 = this.watermanage_value.map((el: any)=>el.doc);
+         this.watermanage_id = this.watermanage_value1[0]._id; // getting id of Water Management data
+         this.watermanage_rev = this.watermanage_value1[0]._rev; // getting rev id of Water Management data
+         console.log(this.watermanage_id);
+         console.log(this.watermanage_rev);
+         localStorage.setItem("water_id",this.watermanage_id);
+         localStorage.setItem("water_rev",this.watermanage_rev);
+    })
   }
 
   get waters() {

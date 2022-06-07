@@ -1,6 +1,15 @@
 <nav>
     <h1>Dashboard</h1>
-    <h3>{{value.firstName}}</h3>
+    <div class="dropdown">
+      <button class="username dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        {{value.firstName}}
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal">Profile</a></li>
+        <li><a class="dropdown-item" href="">Log Out</a></li>
+      </ul>
+    </div>
+    <span><img src="https://www.freeiconspng.com/thumbs/person-icon/clipart--person-icon--cliparts-15.png" class="icon"alt="usericon"></span>
   </nav>
   
   <section id="section4">
@@ -10,7 +19,7 @@
         <h2>Water Management</h2>
         <p>Water management is the control and movement of water resources to minimize damage to life and property and to maximize efficient beneficial use.
            Good water management of dams and levees reduces the risk of harm due to flooding.</p><br>
-        <button class="btn btn-primary" (click)="watermanage()">Water Management</button>
+        <button class="btn btn-primary" (click)="watermanagePage()">Water Management</button>
       </div>
       <img class="img" src="../../images/get-low-cost-irrigation-software-development.png" alt="irrigation">
     </div>
@@ -23,7 +32,7 @@
         <h2>Water Irrigation Level</h2>
         <p>Irrigation water has an RSC 8.5 meq l−1 and it needs to be reduced to 2.5 meq l−1. 
           The water required for irrigation is 800 mm per hectare for the complete growing period of the sorghum crop.</p><br>
-        <button class="btn btn-primary" (click)="irrigation()">Water Irrigation Level</button>
+        <button class="btn btn-primary" (click)="irrigationPage()">Water Irrigation Level</button>
       </div>
     </div>
   </section>
@@ -34,9 +43,29 @@
       <div class="container">
         <h2>Your Data</h2>
         <p>View your all activities in this Component</p><br>
-        <button class="btn btn-primary" (click)="dataview()">Your Data</button>
+        <button class="btn btn-primary" (click)="dataviewPage()">Your Data</button>
       </div>
       <img class="img" src="../../images/user-data.png" alt="irrigation">
     </div>
   </section>
 
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">User Profile</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="card" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

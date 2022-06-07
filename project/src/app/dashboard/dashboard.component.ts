@@ -19,19 +19,19 @@ export class DashboardComponent implements OnInit {
     this.acrouter.queryParams.subscribe(res=>{
       this.user=res.data
     })
-    this.get();
+    this.getUserData();
   }
-  watermanage(){
+  watermanagePage(){
     this.router.navigate(['watermanage'],{queryParams:{data:this.user}})
   }
-  irrigation(){
+  irrigationPage(){
     this.router.navigate(['userdata'],{queryParams:{data:this.user}})
   }
-  dataview(){
+  dataviewPage(){
     this.router.navigate(['dataview'],{queryParams:{data:this.user}})
   }
-  get(){
-    this.api.getData("first-db",this.user).subscribe(data=>{
+  getUserData(){
+    this.api.getUserDataById(this.user).subscribe(data=>{
         this.value= data;
     });
   }

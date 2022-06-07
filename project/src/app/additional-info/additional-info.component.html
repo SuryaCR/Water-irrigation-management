@@ -21,7 +21,7 @@
         </div>
       </div><br>
       <div class="form-group">
-        <label for="address">Address</label>
+        <label for="address">Location</label>
         <textarea
         id="address"
         type="text"
@@ -33,7 +33,7 @@
         </textarea>
         <div class="help-block text-danger" *ngIf="address.touched">
           <span *ngIf="address.errors?.required">
-            Address is REQUIRED!!!
+            Location is REQUIRED!!!
           </span>
         </div>
       </div><br>
@@ -41,7 +41,7 @@
       <hr />
       <div class="d-flex justify-content-center">
 
-      <button class="btn btn-primary" (click)="store()">Save</button>
+      <button class="btn btn-primary" (click)="addAdditionalData()">Save</button>
       </div>
     </form>
   </div>

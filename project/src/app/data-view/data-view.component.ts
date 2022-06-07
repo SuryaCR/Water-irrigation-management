@@ -10,11 +10,16 @@ import { ActivatedRoute } from '@angular/router';
 export class DataViewComponent implements OnInit {
   user: any;
   value:any;
-  i_value:any;
-  w_value:any;
-  w_value1: any;
-  i_value1: any;
+  irrigation_value:any;
+  watermanage_value:any;
+  watermanage_value1: any;
+  irrigation_value1: any;
+  irrigtion_id: any;
+  watermanage_id: any;
+  irrigation_rev:any;
+  watermanage_rev:any;
 
+  searchText:any;
  
   constructor(private api:DatabaseService,private acrouter:ActivatedRoute) {
    }
@@ -23,34 +28,36 @@ export class DataViewComponent implements OnInit {
     this.acrouter.queryParams.subscribe(res=>{
       this.user=res.data
     })
-    this.get();
+    this.getUserData();
   }
 
-  get(){
-    this.api.getData("first-db",this.user).subscribe(data=>{
+  getUserData(){
+    this.api.getUserDataById(this.user).subscribe(data=>{
         this.value= data;
-        this.getWater();
-        this.getIrrigation();
+        this.getWaterData();
+        this.getIrrigationData();
     });
   }
-  getWater(){
-    this.api.fetch("first-db","watermanage",this.user).subscribe(data=>{
-      this.w_value = data;
-         this.w_value=this.w_value.rows
-         this.w_value1 = this.w_value.map((el: any)=>el.doc);
-
-         console.log(this.w_value1);
-          
+  getWaterData(){
+    this.api.fetchDataByType("watermanage",this.user).subscribe(data=>{
+      console.log(data);
+      this.watermanage_value = data;
+         this.watermanage_value=this.watermanage_value.rows
+         this.watermanage_value1 = this.watermanage_value.map((el: any)=>el.doc);
+         this.watermanage_id = this.watermanage_value1[0]._id; // getting id of Water Management data
+         this.watermanage_rev = this.watermanage_value1[0]._rev; // getting rev id of Water Management data
+         console.log(this.watermanage_rev)
+         
     })
   }
-  getIrrigation(){
-    this.api.fetch("first-db","irrigation",this.user).subscribe(data=>{
-      this.i_value = data;
-         this.i_value=this.i_value.rows
-         this.i_value1 = this.i_value.map((el: any)=>el.doc);
-
-         console.log(this.i_value1);
-          
+  getIrrigationData(){
+    this.api.fetchDataByType("irrigation",this.user).subscribe(data=>{
+      this.irrigation_value = data;
+         this.irrigation_value=this.irrigation_value.rows
+         this.irrigation_value1 = this.irrigation_value.map((el: any)=>el.doc);
+         this.irrigtion_id = this.irrigation_value1[0]._id; // getting id of Irrigation Management data
+         this.irrigation_rev = this.irrigation_value1[0]._rev; // getting rev id of Irrigation Management data
+         
     })
 
   }

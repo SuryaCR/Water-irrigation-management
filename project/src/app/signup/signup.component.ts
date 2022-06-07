@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup,FormBuilder,NgForm,Validators} from '@angular/forms';
-// import { StoreService } from '../store.service';
 import { DatabaseService } from '../database.service';
 import { Router } from '@angular/router';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-signup',
@@ -25,7 +25,7 @@ export class SignupComponent implements OnInit {
   array: any;
   private _id: any;
   
-  constructor(private fb: FormBuilder,public api:DatabaseService,private router:Router) {
+  constructor(private fb: FormBuilder,public api:DatabaseService,private router:Router,private toastr:ToastrService) {
     this.formGroup = this.fb.group({
       firstName: [this.record.firstName,[Validators.required,Validators.minLength(3)]],
       lastName: [this.record.lastName,Validators.required],
@@ -36,8 +36,7 @@ export class SignupComponent implements OnInit {
     });
    }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   get firstName() {
     return this.formGroup.get('firstName')!;
@@ -55,12 +54,11 @@ export class SignupComponent implements OnInit {
     return this.formGroup.get('password')!;
   }
 
-  storing(){
-    // console.log(formdata);
-    // this.store.pushData(formdata);
+  addUserData(){
 
-    this.api.add("first-db",this.formGroup.value).subscribe(res=>{
-      console.log("Your data was posted successfully!");
+    this.api.addUser(this.formGroup.value).subscribe(res=>{
+      console.log("Your data was posted successfully!"+res);
+      this.toastr.success("success","Please Log In");
       this.router.navigate(['/login']);
 
     },rej=>{

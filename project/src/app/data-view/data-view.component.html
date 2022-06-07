@@ -23,13 +23,21 @@
   <th>Litres Of Water for Food Crops</th>
   <th>Litres Of Water for Trees</th>
   <th>Litres Of Water for Non-Food Crops</th>
-  <tr *ngFor="let value of w_value1">
+  <tr *ngFor="let value of watermanage_value1">
     <td>{{ value.Water_food }}<span>Ltr</span></td>
     <td>{{ value.Water_tree }}<span>Ltr</span></td>
     <td>{{ value.Water_non_food }}<span>Ltr</span></td>
   </tr>
 </table>
-
+<label class="container">Search in This Table</label>
+<input
+  class="form-control container"
+  type="text"
+  name="search"
+  [(ngModel)]="searchText"
+  autocomplete="off"
+  placeholder="Search By Crop Type"
+/> <br>
 <table class="table container">
   <caption>
     User Irrigation Details
@@ -38,10 +46,11 @@
   <th>Hours Of Water Irrigated</th>
   <th>Type Of Crops</th>
   <th>Litres Of Water Irrigated</th>
-  <tr *ngFor="let value of i_value1">
+  <tr *ngFor="let value of irrigation_value1 | filter:searchText">
     <td>{{ value.Acres }}</td>
     <td>{{ value.Hours }}</td>
     <td>{{ value.Crops }}</td>
     <td>{{ value.Water_Litres }}</td>
+    <!-- <td>{{value._id}}</td> -->
   </tr>
 </table>
