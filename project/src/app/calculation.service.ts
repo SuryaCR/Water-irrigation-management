@@ -7,7 +7,9 @@ export class CalculationService {
 
   waterLitres:any;
   totalPlants:any;
-  constructor() { }
+  constructor() { 
+    console.log();
+  }
   foodcrop(acres1:any,hours1:any){
     this.totalPlants = acres1*17800;
     this.waterLitres = this.totalPlants*0.2/24;

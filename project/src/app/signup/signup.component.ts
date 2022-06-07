@@ -36,7 +36,9 @@ export class SignupComponent implements OnInit {
     });
    }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log();
+  }
 
   get firstName() {
     return this.formGroup.get('firstName')!;
