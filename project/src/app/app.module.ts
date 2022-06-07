@@ -15,7 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
-import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS,HttpInterceptor } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { DataViewComponent } from './data-view/data-view.component';
 import { WaterManageComponent } from './water-manage/water-manage.component';
 
