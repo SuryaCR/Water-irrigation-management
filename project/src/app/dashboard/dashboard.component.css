@@ -70,6 +70,19 @@ nav{
     border: transparent;
     background-color: transparent;
 }
+.card-img{
+    height: 100px;
+    width: 100px;
+    align-items: center;
+    
+}
+.dropdown-item{
+    cursor: pointer;
+    font-weight: 500;
+}
+.feed{
+    margin-left: 43%;
+}
 @media (max-width:900px){
     .container p,h2{
         width:100%;

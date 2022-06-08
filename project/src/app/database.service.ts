@@ -88,17 +88,46 @@ export class DatabaseService {
     }
     return this.http.post(url,doc,this.httpOptions);
   }
-  updateWaterData(id:any,rev:any,user:any){
+  updateWaterData(id:any,formValue:any,user:any,waterData:any){
     let data={
       "_id":id,
-      "_rev":rev,
-      "Water_food":localStorage.getItem('updatedData'),
-      "Water_tree":"7000",
-      "Water_non_food":"7000",
+      "_rev":formValue._rev,
+      "Water_food":waterData,
+      "Water_tree":formValue.Water_tree,
+      "Water_non_food":formValue.Water_non_food,
       "type":"watermanage",
       "user":user,
     }
     const url=this.url+this.dbName;
     return this.http.post<any>(url,data,this.httpOptions);
   }
+
+  updateWaterTreeData(id:any,formValue:any,user:any,waterData:any){
+    let data={
+      "_id":id,
+      "_rev":formValue._rev,
+      "Water_food":formValue.Water_food,
+      "Water_tree":waterData,
+      "Water_non_food":formValue.Water_non_food,
+      "type":"watermanage",
+      "user":user,
+    }
+    const url=this.url+this.dbName;
+    return this.http.post<any>(url,data,this.httpOptions);
+  }
+
+  updateWaterNonData(id:any,formValue:any,user:any,waterData:any){
+    let data={
+      "_id":id,
+      "_rev":formValue._rev,
+      "Water_food":formValue.Water_food,
+      "Water_tree":formValue.Water_tree,
+      "Water_non_food":waterData,
+      "type":"watermanage",
+      "user":user,
+    }
+    const url=this.url+this.dbName;
+    return this.http.post<any>(url,data,this.httpOptions);
+  }
+
 }

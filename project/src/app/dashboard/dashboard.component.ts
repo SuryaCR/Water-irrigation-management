@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute,Router } from '@angular/router';
+import {FormGroup,FormBuilder,Validators} from '@angular/forms';
 import { DatabaseService } from '../database.service';
 
 @Component({
@@ -13,7 +14,16 @@ export class DashboardComponent implements OnInit {
   object:any=[];
   user: any;
   value: any;
-  constructor(private acrouter:ActivatedRoute,private router:Router,private api:DatabaseService) { }
+
+  formGroup: FormGroup;
+  record: any = {
+    feedback: '',
+  };
+  constructor(private acrouter:ActivatedRoute,private router:Router,private api:DatabaseService,private fb:FormBuilder) { 
+    this.formGroup = this.fb.group({
+      feedback: [this.record.feedback,Validators.required],
+    });
+  }
 
   ngOnInit(): void {
     this.acrouter.queryParams.subscribe(res=>{
@@ -36,5 +46,11 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+  get feedback() {
+    return this.formGroup.get('feedback')!;
+  }
 
+  getFeedBack(){
+    console.log(this.formGroup.value);
+  }
 }

@@ -8,7 +8,7 @@
         id="firstName"
         class="form-control"
         formControlName="firstName"
-        placeholder="Enter Your FirstName"
+        placeholder="Jhon"
         required
       />
       <div class="help-block text-danger" *ngIf="firstName.touched">
@@ -26,7 +26,7 @@
         id="lastName"
         class="form-control"
         formControlName="lastName"
-        placeholder="Enter Your LastName"
+        placeholder="Wick"
         required
       />
       <div class="help-block text-danger" *ngIf="lastName.touched">
@@ -42,7 +42,7 @@
         id="email"
         class="form-control"
         formControlName="email"
-        placeholder="Enter Your Email"
+        placeholder="jhonwick@gmail.com"
         required pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"
       />
       <div class="help-block text-danger" *ngIf="email.touched">
@@ -75,7 +75,7 @@
         id="mobile"
         class="form-control"
         formControlName="mobile"
-        placeholder="Enter Your Mobile Number"
+        placeholder="9878986578"
       />
       <div class="help-block text-danger" *ngIf="mobile.touched">
         <span *ngIf="mobile.errors?.required">

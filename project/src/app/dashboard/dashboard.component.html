@@ -5,8 +5,8 @@
         {{value.firstName}}
       </button>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-        <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal">Profile</a></li>
-        <li><a class="dropdown-item" href="">Log Out</a></li>
+        <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal">View Profile</a></li>
+        <li><a class="dropdown-item" routerLink="/login">Log Out</a></li>
       </ul>
     </div>
     <span><img src="https://www.freeiconspng.com/thumbs/person-icon/clipart--person-icon--cliparts-15.png" class="icon"alt="usericon"></span>
@@ -49,20 +49,42 @@
     </div>
   </section>
 
+  <form [formGroup]="formGroup">
+    <h2 class="feed">FeedBack Form</h2>
+    <div class="form-group">
+      <textarea
+      id="feedback"
+      type="text"
+      class="form-control container"
+      formControlName="feedback"
+      placeholder="Enter feedback"
+      required rows="5" cols="33">
+        
+      </textarea>
+      <div class="help-block text-danger" *ngIf="feedback.touched">
+        <span *ngIf="feedback.errors?.required">
+          FeedBack is REQUIRED!!!
+        </span>
+      </div>
+    </div><br>
+    <div class="d-flex justify-content-center">
+
+    <button class="btn btn-primary" (click)="getFeedBack()">Save</button>
+    </div>
+  </form>
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">User Profile</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
         <div class="modal-body">
-          <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="float: right;"></button>
+          <h3 class="modal-title" id="exampleModalLabel">User Profile</h3>
+          <div class="card container" style="width: 18rem;">
+            <img src="https://www.freeiconspng.com/thumbs/person-icon/clipart--person-icon--cliparts-15.png" class="card-img" alt="icon">
             <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
+              <h3 class="card-title">User Name<span><h4 class="card-title">{{value.firstName}}</h4></span></h3>
+              <h3 class="card-title">Email<span><h4 class="card-title">{{value.email}}</h4></span></h3>
+              <h3 class="card-title">Mobile Number<span><h4 class="card-title">{{value.mobile}}</h4></span></h3>
+              
             </div>
           </div>
         </div>

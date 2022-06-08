@@ -27,6 +27,7 @@ export class WaterManageComponent implements OnInit {
   watermanage_value1: any;
   watermanage_id: any;
   watermanage_rev: any;
+  array2: any;
 
   constructor(private api:DatabaseService,private fb:FormBuilder,private acrouter:ActivatedRoute,private toastr:ToastrService) { 
     this.formGroup = this.fb.group({
@@ -45,7 +46,9 @@ export class WaterManageComponent implements OnInit {
     this.api.addWaterData(this.formGroup.value,this.user).subscribe(res=>{
       this.value = res;
       this.array = this.value.id;
-      localStorage.setItem('WaterManage',this.array);
+      this.array2 = this.value.rev;
+      localStorage.setItem('WaterManageId',this.array);
+      localStorage.setItem('WaterManageRev',this.array2);
       this.toastr.success("success","Data Posted");
     },rej=>{
       this.toastr.error("error","Data Not Posted"+rej);
