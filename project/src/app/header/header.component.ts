@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ToastrService} from 'ngx-toastr'
 
 @Component({
   selector: 'app-header',
@@ -7,11 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { console.log();}
+  constructor(private toastr:ToastrService) { console.log();}
 
 
   ngOnInit(): void {
     console.log();
+  }
+  pleaseLogin(){
+    this.toastr.error("","Pleae Login");
+  }
+  logout(){
+    this.toastr.success("success","You Logged Out");
   }
 
 }

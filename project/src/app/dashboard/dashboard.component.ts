@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute,Router } from '@angular/router';
 import {FormGroup,FormBuilder,Validators} from '@angular/forms';
 import { DatabaseService } from '../database.service';
+import {ToastrService} from 'ngx-toastr'
+
 
 @Component({
   selector: 'app-dashboard',
@@ -19,7 +21,7 @@ export class DashboardComponent implements OnInit {
   record: any = {
     feedback: '',
   };
-  constructor(private acrouter:ActivatedRoute,private router:Router,private api:DatabaseService,private fb:FormBuilder) { 
+  constructor(private acrouter:ActivatedRoute,private router:Router,private api:DatabaseService,private fb:FormBuilder,private toastr:ToastrService) { 
     this.formGroup = this.fb.group({
       feedback: [this.record.feedback,Validators.required],
     });
@@ -52,5 +54,9 @@ export class DashboardComponent implements OnInit {
 
   getFeedBack(){
     console.log(this.formGroup.value);
+  }
+
+  logout(){
+    this.toastr.success("success","You Logged Out");
   }
 }

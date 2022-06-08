@@ -83,6 +83,7 @@ nav{
 .feed{
     margin-left: 43%;
 }
+
 @media (max-width:900px){
     .container p,h2{
         width:100%;

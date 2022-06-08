@@ -6,7 +6,7 @@
       </button>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
         <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal">View Profile</a></li>
-        <li><a class="dropdown-item" routerLink="/login">Log Out</a></li>
+        <li><a class="dropdown-item" routerLink="/login" (click)="logout()">Log Out</a></li>
       </ul>
     </div>
     <span><img src="https://www.freeiconspng.com/thumbs/person-icon/clipart--person-icon--cliparts-15.png" class="icon"alt="usericon"></span>
@@ -83,8 +83,7 @@
             <div class="card-body">
               <h3 class="card-title">User Name<span><h4 class="card-title">{{value.firstName}}</h4></span></h3>
               <h3 class="card-title">Email<span><h4 class="card-title">{{value.email}}</h4></span></h3>
-              <h3 class="card-title">Mobile Number<span><h4 class="card-title">{{value.mobile}}</h4></span></h3>
-              
+              <h3 class="card-title">Mobile Number<span><h4 class="card-title">{{value.mobile}}</h4></span></h3>  
             </div>
           </div>
         </div>

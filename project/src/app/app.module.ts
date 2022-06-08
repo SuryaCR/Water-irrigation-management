@@ -24,7 +24,8 @@ import { IrrigationManageComponent } from './irrigation-manage/irrigation-manage
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { IntercepterService } from './intercepter.service';
 
-import {Ng2SearchPipeModule} from 'ng2-search-filter'
+import {Ng2SearchPipeModule} from 'ng2-search-filter';
+import { AboutComponent } from './about/about.component'
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import {Ng2SearchPipeModule} from 'ng2-search-filter'
     AdditionalInfoComponent,
     IrrigationManageComponent,
     DashboardComponent,
+    AboutComponent,
 
   ],
   imports: [
