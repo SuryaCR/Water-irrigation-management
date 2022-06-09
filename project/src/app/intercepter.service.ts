@@ -16,7 +16,7 @@ export class IntercepterService  implements HttpInterceptor {
         console.log(evt)
       }, err => {
         console.log(err)
-        if(err.error["message"]) {
+        if(err.error['message']) {
             this.toastr.error(err.error.message.reason)
         }
         else {

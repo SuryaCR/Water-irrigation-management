@@ -71,7 +71,7 @@ export class LoginComponent implements OnInit {
           this.toastr.error("Enter Valid Password","Invalid User & Password");
         }
     },rej=>{
-      console.log(rej);
+      this.toastr.error(rej.statusText);
     })
   }         
 
