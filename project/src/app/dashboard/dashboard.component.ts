@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute,Router } from '@angular/router';
-import {FormGroup,FormBuilder,Validators} from '@angular/forms';
+import {FormBuilder} from '@angular/forms';
 import { DatabaseService } from '../database.service';
 import {ToastrService} from 'ngx-toastr';
 import {NgxSpinnerService} from 'ngx-spinner';
