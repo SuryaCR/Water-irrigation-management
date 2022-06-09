@@ -35,10 +35,10 @@ export class AdditionalInfoComponent implements OnInit {
   ngOnInit(): void {
     this.acrouter.queryParams.subscribe(res=>{
       this.irrigation=res.data;
-    })
+    },rej=>{console.log(rej)})
     this.acrouter.queryParams.subscribe(response=>{
       this.user = response.data1;
-    })
+    },rejection=>{console.log(rejection)})
   }
 
   get soil() {

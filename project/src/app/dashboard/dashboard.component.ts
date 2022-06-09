@@ -38,10 +38,10 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.acrouter.queryParams.subscribe(res=>{
       this.user=res.data
-    })
+    },rej=>{console.log(rej)})
     this.acrouter.queryParams.subscribe(res1=>{
       this.array = res1.data1
-    })
+    },rej=>{console.log(rej)})
     this.getUserData();
   }
   watermanagePage(){
@@ -54,6 +54,8 @@ export class DashboardComponent implements OnInit {
   getUserData(){
     this.api.getUserDataById(this.user).subscribe(data=>{
         this.value= data;
+    },rej=>{
+      console.log(rej);
     });
   }
 
@@ -74,6 +76,8 @@ export class DashboardComponent implements OnInit {
         this.toastr.warning("Data Exist","You already entered additional data");
         this.router.navigate(['dashboard'],{queryParams:{data:this.user}});
       }
+    },rej=>{
+      console.log(rej);
     })
   }
 

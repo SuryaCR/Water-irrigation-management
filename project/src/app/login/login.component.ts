@@ -70,8 +70,8 @@ export class LoginComponent implements OnInit {
         else{
           this.toastr.error("Enter Valid Password","Invalid User & Password");
         }
-      
-      
+    },rej=>{
+      console.log(rej);
     })
   }         
 

@@ -140,6 +140,8 @@ export class IrrigationManageComponent implements OnInit {
     this.api.getUserDataById(this.watermanage_id).subscribe(res=>{
       console.log(res);
       this.value1 = res; 
+    },rej=>{
+      console.log(rej);
     });
   }
 

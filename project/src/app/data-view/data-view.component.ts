@@ -36,6 +36,8 @@ export class DataViewComponent implements OnInit {
         this.value= data;
         this.getWaterData();
         this.getIrrigationData();
+    },rej=>{
+      console.log(rej);
     });
   }
   getWaterData(){
@@ -48,6 +50,8 @@ export class DataViewComponent implements OnInit {
          this.watermanage_rev = this.watermanage_value1[0]._rev; // getting rev id of Water Management data
          console.log(this.watermanage_rev)
          
+    },rej=>{
+      console.log(rej);
     })
   }
   getIrrigationData(){
@@ -58,6 +62,8 @@ export class DataViewComponent implements OnInit {
          this.irrigtion_id = this.irrigation_value1[0]._id; // getting id of Irrigation Management data
          this.irrigation_rev = this.irrigation_value1[0]._rev; // getting rev id of Irrigation Management data
          
+    },rej=>{
+      console.log(rej);
     })
 
   }

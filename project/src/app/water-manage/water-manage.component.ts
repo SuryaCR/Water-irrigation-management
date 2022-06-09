@@ -69,6 +69,8 @@ export class WaterManageComponent implements OnInit {
          console.log(this.watermanage_rev);
          localStorage.setItem("water_id",this.watermanage_id);
          localStorage.setItem("water_rev",this.watermanage_rev);
+    },rej=>{
+      console.log(rej);
     })
   }
 
