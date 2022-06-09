@@ -1,24 +1,32 @@
-<div class="d-flex justify-content-center">
-    <form [formGroup]="formGroup">
-      <h2>Log In</h2>
-    <hr>
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input
-          id="email"
-          class="form-control"
-          formControlName="email"
-          placeholder="example@gmail.com"
-          required
-        />
-      </div>
-      
-      <div class="form-group">
-          <label for="password">Password</label>
-          <input type="password" id="password" class="form-control" formControlName="password" required/>
+<main class="container">
+    <div class="card">
+      <div class="card-text">
+        <div class="d-flex justify-content-center">
+          <form [formGroup]="formGroup">
+            <h2>Log In</h2>
+          <hr>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input
+                id="email"
+                class="form-control"
+                formControlName="email"
+                placeholder="example@gmail.com"
+                required
+              />
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" class="form-control" formControlName="password" required/>
+              </div>
+            <hr />
+            <button class="btn btn-primary"><a routerLink="/signup">Back</a></button>&nbsp;&nbsp;&nbsp;<span><button class="btn btn-primary" (click)="userLogin(formGroup.value)">Log In</button></span>
+          </form>
         </div>
-      <hr />
-      <button class="btn btn-primary" (click)="userLogin(formGroup.value)">Log In</button>
-    </form>
-  </div>
-  
+      </div>
+      <div class="img-component">
+        <img src="../../images/Good irrig management-1_1.png" alt="Header-Image" />
+      </div>
+    </div>
+  <ngx-spinner size="medium" [type]="typeSelected"></ngx-spinner>

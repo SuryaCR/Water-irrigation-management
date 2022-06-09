@@ -40,6 +40,7 @@ export class IrrigationManageComponent implements OnInit {
   value4:any;
   array1: any;
   array2: any;
+  value5: any;
 
   constructor(private fb: FormBuilder,private calc:CalculationService,private api:DatabaseService,private router:Router,private acrouter:ActivatedRoute,private toastr:ToastrService) { 
     this.formGroup = this.fb.group({
@@ -128,8 +129,6 @@ export class IrrigationManageComponent implements OnInit {
            break;
         }
       })
-      this.router.navigate(['additionalinfo'],{queryParams:{data:this.array}})
-      localStorage.setItem('Irrigationvalue',this.array);
 
     },rej=>{
       this.toastr.error("error","Your Data Not Posted"+rej);
@@ -142,6 +141,10 @@ export class IrrigationManageComponent implements OnInit {
       console.log(res);
       this.value1 = res; 
     });
+  }
+
+  dashboard(){
+    this.router.navigate(['/dashboard'],{queryParams:{data:this.user,data1:this.array}});
   }
 
 }

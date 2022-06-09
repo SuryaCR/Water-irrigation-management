@@ -53,12 +53,13 @@ export class DatabaseService {
     return this.http.post(url,data,this.httpOptions);
   }
 
-  addAdditionalInfo(formdata:any,id:any){
+  addAdditionalInfo(formdata:any,id:any,user:any){
     let data={
       "Soil":formdata['soil'],
       "Address":formdata['address'],
       "type":"additional_Info",
-      "irrigation":id
+      "irrigation":id,
+      "user":user
     }
     const url=this.url+this.dbName;
     return this.http.post(url,data,this.httpOptions);

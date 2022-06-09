@@ -20,7 +20,10 @@ exp.get('/getdata/:id', (req, res) => {
     dbconnection.fresher.find(object).then((data => {
         console.log("firstname", data);
         res.json(data);
-
+    }),).catch((function (err){
+        res.status(400).send({
+            message: err
+        });
     }))
 })
 

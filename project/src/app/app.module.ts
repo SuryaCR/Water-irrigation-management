@@ -25,7 +25,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { IntercepterService } from './intercepter.service';
 
 import {Ng2SearchPipeModule} from 'ng2-search-filter';
-import { AboutComponent } from './about/about.component'
+import { AboutComponent } from './about/about.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
+
 
 @NgModule({
   declarations: [
@@ -55,6 +57,7 @@ import { AboutComponent } from './about/about.component'
     HttpClientModule,
     ToastrModule.forRoot(),
     Ng2SearchPipeModule,
+    NgxSpinnerModule,
    
   ],
   providers: [{provide: HTTP_INTERCEPTORS,

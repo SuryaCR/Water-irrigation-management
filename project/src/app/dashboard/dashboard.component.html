@@ -19,12 +19,12 @@
         <h2>Water Management</h2>
         <p>Water management is the control and movement of water resources to minimize damage to life and property and to maximize efficient beneficial use.
            Good water management of dams and levees reduces the risk of harm due to flooding.</p><br>
-        <button class="btn btn-primary" (click)="watermanagePage()">Water Management</button>
+        <button class="btn btn-primary form" (click)="watermanagePage()">Water Management</button>
       </div>
       <img class="img" src="../../images/get-low-cost-irrigation-software-development.png" alt="irrigation">
     </div>
   </section>
-
+<br>
   <section id="section5">
     <div class="wrapper">
       <img class="img" src="../../images/Water irrigation.jpg" alt="irrigation">
@@ -32,46 +32,36 @@
         <h2>Water Irrigation Level</h2>
         <p>Irrigation water has an RSC 8.5 meq l−1 and it needs to be reduced to 2.5 meq l−1. 
           The water required for irrigation is 800 mm per hectare for the complete growing period of the sorghum crop.</p><br>
-        <button class="btn btn-primary" (click)="irrigationPage()">Water Irrigation Level</button>
+        <button class="btn btn-primary form" (click)="irrigationPage()">Irrigation Management</button>
       </div>
     </div>
   </section>
-
+<br>
   <section id="section6">
     <div class="curve-top2"></div>
     <div class="wrapper">
       <div class="container">
         <h2>Your Data</h2>
         <p>View your all activities in this Component</p><br>
-        <button class="btn btn-primary" (click)="dataviewPage()">Your Data</button>
+        <button class="btn btn-primary form" (click)="showSpinner()">Your Data</button>
       </div>
       <img class="img" src="../../images/user-data.png" alt="irrigation">
     </div>
   </section>
-
-  <form [formGroup]="formGroup">
-    <h2 class="feed">FeedBack Form</h2>
-    <div class="form-group">
-      <textarea
-      id="feedback"
-      type="text"
-      class="form-control container"
-      formControlName="feedback"
-      placeholder="Enter feedback"
-      required rows="5" cols="33">
-        
-      </textarea>
-      <div class="help-block text-danger" *ngIf="feedback.touched">
-        <span *ngIf="feedback.errors?.required">
-          FeedBack is REQUIRED!!!
-        </span>
+  <br>
+  <section id="section6">
+    <div class="curve-top2"></div>
+    <div class="wrapper">
+      <div class="container">
+        <h2>Your Additional Info</h2>
+        <p>Enter your Additional Info In this Component</p><br>
+        <button class="btn btn-primary form" (click)="additionalInfo()">Additional Info</button>
       </div>
-    </div><br>
-    <div class="d-flex justify-content-center">
-
-    <button class="btn btn-primary" (click)="getFeedBack()">Save</button>
+      <img class="img" src="../../images/user-data.png" alt="irrigation">
     </div>
-  </form>
+  </section>
+  <ngx-spinner size="medium" [type]="typeSelected"></ngx-spinner>
+  
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder,Validators,FormGroup } from '@angular/forms';
 import { DatabaseService } from '../database.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute,Router } from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
 @Component({
   selector: 'app-water-manage',
@@ -29,7 +29,7 @@ export class WaterManageComponent implements OnInit {
   watermanage_rev: any;
   array2: any;
 
-  constructor(private api:DatabaseService,private fb:FormBuilder,private acrouter:ActivatedRoute,private toastr:ToastrService) { 
+  constructor(private api:DatabaseService,private fb:FormBuilder,private acrouter:ActivatedRoute,private toastr:ToastrService,private router:Router) { 
     this.formGroup = this.fb.group({
       waters: [this.record.waters,Validators.required],
       waters_tree: [this.record.waters_tree,Validators.required],
@@ -41,6 +41,7 @@ export class WaterManageComponent implements OnInit {
     this.acrouter.queryParams.subscribe(res=>{
       this.user=res.data
     })
+    console.log(this.formGroup);
   }
   addWaterInfo(){
     this.api.addWaterData(this.formGroup.value,this.user).subscribe(res=>{
@@ -51,7 +52,7 @@ export class WaterManageComponent implements OnInit {
       localStorage.setItem('WaterManageRev',this.array2);
       this.toastr.success("success","Data Posted");
     },rej=>{
-      this.toastr.error("error","Data Not Posted"+rej);
+      this.toastr.error(rej.error.reason);
 
     });
    this.getWaterData();
@@ -79,5 +80,9 @@ export class WaterManageComponent implements OnInit {
   }
   get waters_non(){
     return this.formGroup.get('waters_non')!;
+  }
+
+  dashboard(){
+    this.router.navigate(['/dashboard'],{queryParams:{data:this.user}});
   }
 }

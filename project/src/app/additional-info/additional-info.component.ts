@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormGroup,FormBuilder,Validators} from '@angular/forms';
 import { DatabaseService } from '../database.service';
 import { ActivatedRoute } from '@angular/router';
+import {ToastrService} from 'ngx-toastr'
 
 @Component({
   selector: 'app-additional-info',
@@ -21,9 +22,10 @@ export class AdditionalInfoComponent implements OnInit {
   array: any;
   private _id: any;
   irrigation: any;
+  user:any;
   
 
-  constructor(private fb:FormBuilder,private api:DatabaseService,private acrouter:ActivatedRoute) { 
+  constructor(private fb:FormBuilder,private api:DatabaseService,private acrouter:ActivatedRoute,private toastr:ToastrService) { 
     this.formGroup = this.fb.group({
       soil: [this.record.soil,Validators.required],
       address: [this.record.address,Validators.required],
@@ -32,7 +34,10 @@ export class AdditionalInfoComponent implements OnInit {
 
   ngOnInit(): void {
     this.acrouter.queryParams.subscribe(res=>{
-      this.irrigation=res.data
+      this.irrigation=res.data;
+    })
+    this.acrouter.queryParams.subscribe(response=>{
+      this.user = response.data1;
     })
   }
 
@@ -43,8 +48,9 @@ export class AdditionalInfoComponent implements OnInit {
     return this.formGroup.get('address')!;
   }
   addAdditionalData(){
-    this.api.addAdditionalInfo(this.formGroup.value,this.irrigation).subscribe(res=>{
-      console.log("Your data was posted successfully!"+res);
+    this.api.addAdditionalInfo(this.formGroup.value,this.irrigation,this.user).subscribe(res=>{
+      console.log(res);
+      this.toastr.success("Success","Your data posted");
     },rej=>{
       console.log("Can not post data"+rej);
     });

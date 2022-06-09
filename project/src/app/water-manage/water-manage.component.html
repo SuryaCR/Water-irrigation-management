@@ -1,59 +1,71 @@
- <div class="d-flex justify-content-center form">
-    <form [formGroup]="formGroup">
-      <h2>User Value</h2>
-      <hr>
-      <div class="form-group">
-        <label for="waters">Water for Food Crops</label>
-        <input
-          id="waters"
-          class="form-control"
-          formControlName="waters"
-          placeholder="5000"
-          required
-        />
-        <div class="help-block text-danger" *ngIf="waters.touched">
-          <span *ngIf="waters.errors?.required">
-            Total Water is REQUIRED!!!
-          </span>
-        </div>
-      </div><br>
-      <div class="form-group">
-        <label for="waters_tree">Water for Trees</label>
-        <input
-          id="waters_tree"
-          class="form-control"
-          formControlName="waters_tree"
-          placeholder="6000"
-          required
-        />
-        <div class="help-block text-danger" *ngIf="waters_tree.touched">
-          <span *ngIf="waters_tree.errors?.required">
-            Total Water is REQUIRED!!!
-          </span>
-        </div>
-      </div><br>
-      <div class="form-group">
-        <label for="waters_non">Water for Non-Food Crops</label>
-        <input
-          id="waters_non"
-          class="form-control"
-          formControlName="waters_non"
-          placeholder="7000"
-          required
-        />
-        <div class="help-block text-danger" *ngIf="waters_non.touched">
-          <span *ngIf="waters_non.errors?.required">
-            Total Water is REQUIRED!!!
-          </span>
-        </div>
-      </div><br>
-      <div class="d-flex justify-content-center">
-        <button class="btn btn-primary" (click)="addWaterInfo()">Save</button>
+<div class="d-flex justify-content-center form">
+  <form [formGroup]="formGroup" (ngSubmit)="addWaterInfo()">
+    <h2>User Value</h2>
+    <hr />
+    <div class="form-group">
+      <label for="waters">Water for Food Crops</label>
+      <input
+      type="text"
+        id="waters"
+        class="form-control"
+        formControlName="waters"
+        placeholder="Enter Water for Food Crops"
+        pattern="[0-9]*"
+        required
+      />
+      <div class="help-block text-danger" *ngIf="waters.dirty">
+        <span *ngIf="waters.errors?.required">
+          Total Water is REQUIRED!!!
+        </span>
+        
+        <span *ngIf="formGroup.hasError('pattern','waters')">
+          Total Water must be in number!!!
+        </span>
       </div>
-      </form>
     </div>
-    <div>
-      <button class="btn btn-primary" >Click</button>
+    <br />
+    <div class="form-group">
+      <label for="waters_tree">Water for Trees</label>
+      <input
+        id="waters_tree"
+        class="form-control"
+        formControlName="waters_tree"
+        placeholder="Enter Water for Trees"
+        pattern="[0-9]*"
+        required
+      />
+      <div class="help-block text-danger" *ngIf="waters_tree.dirty">
+        <span *ngIf="waters_tree.errors?.required">
+          Total Water is REQUIRED!!!
+        </span>
+        <span *ngIf="formGroup.hasError('pattern','waters')">
+          Total Water must be in number!!!
+        </span>
+      </div>
     </div>
-  
-  
+    <br />
+    <div class="form-group">
+      <label for="waters_non">Water for Non-Food Crops</label>
+      <input
+        id="waters_non"
+        class="form-control"
+        formControlName="waters_non"
+        placeholder="Enter Water for Non-Food Crops"
+        pattern="[0-9]*"
+        required
+      />
+      <div class="help-block text-danger" *ngIf="waters_non.dirty">
+        <span *ngIf="waters_non.errors?.required">
+          Total Water is REQUIRED!!!
+        </span>
+        <span *ngIf="formGroup.hasError('pattern','waters')">
+          Total Water must be in number!!!
+        </span>
+      </div>
+    </div>
+    <br />
+    <div class="d-flex justify-content-center">
+      <button class="btn btn-primary" (click)="dashboard()">Back</button>&nbsp;<button class="btn btn-primary" [disabled]="!formGroup.valid">Save</button>
+    </div>
+  </form>
+</div>

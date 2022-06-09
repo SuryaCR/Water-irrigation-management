@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup,Validators} from '@angular/forms';
 import { DatabaseService } from '../database.service';
 import { Router } from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
+import {NgxSpinnerService} from 'ngx-spinner';
 
 
 @Component({
@@ -25,15 +26,29 @@ export class LoginComponent implements OnInit {
   value: any;
   array: any;
   private _id: any;
+  typeSelected: string;
 
-  constructor(private fb:FormBuilder,private api:DatabaseService,private router:Router,private toastr:ToastrService) {
+  constructor(private fb:FormBuilder,private api:DatabaseService,private router:Router,private toastr:ToastrService,private spinner:NgxSpinnerService) {
     this.formGroup = this.fb.group({
 
       email: [this.record.email,[Validators.required]],
       password: [this.record.password,[Validators.required]],
       type: [this.record.type]
     });
+    this.typeSelected = 'ball-fussion'; 
    }
+
+   public showSpinner():void {
+    this.spinner.show();
+    
+
+    setTimeout(() => {
+      this.spinner.hide();
+      this.toastr.success("success","Logged In");
+      this.router.navigate(['/dashboard'],{queryParams:{data:this._id}})
+   },2000);
+    
+}
 
   ngOnInit(): void {console.log();}
   
@@ -50,8 +65,7 @@ export class LoginComponent implements OnInit {
           this.toastr.error("Enter Valid User Name","User Doesn't Exist")
         }
         else if(data.docs[0].password == this.password){
-          this.toastr.success("success","Logged In");
-          this.router.navigate(['/dashboard'],{queryParams:{data:this._id}})
+          this.showSpinner();
         }
         else{
           this.toastr.error("Enter Valid Password","Invalid User & Password");

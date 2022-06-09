@@ -1,34 +1,47 @@
 <h1>User Data</h1>
 
-<table class="table container">
+<table class="content-table container">
   <caption>
     User Data
   </caption>
-  <th>First Name</th>
-  <th>Last Name</th>
-  <th>Email</th>
-  <th>Mobile Number</th>
-  <tr>
+  <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+      <th>Mobile Number</th>
+    </tr>
+  </thead>
+  <tr class="active-row">
     <td>{{ value.firstName }}</td>
     <td>{{ value.lastName }}</td>
     <td>{{ value.email }}</td>
     <td>{{ value.mobile }}</td>
   </tr>
 </table>
+<br /><br />
 
-<table class="table container">
+<table class="content-table container">
   <caption>
     Total Litres Of Water
   </caption>
-  <th>Litres Of Water for Food Crops</th>
-  <th>Litres Of Water for Trees</th>
-  <th>Litres Of Water for Non-Food Crops</th>
-  <tr *ngFor="let value of watermanage_value1">
-    <td>{{ value.Water_food }}<span>Ltr</span></td>
-    <td>{{ value.Water_tree }}<span>Ltr</span></td>
-    <td>{{ value.Water_non_food }}<span>Ltr</span></td>
-  </tr>
+  <thead>
+    <tr>
+      <th>Litres Of Water for Food Crops</th>
+      <th>Litres Of Water for Trees</th>
+      <th>Litres Of Water for Non-Food Crops</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let value of watermanage_value1">
+      <td>{{ value.Water_food }}<span>Ltr</span></td>
+      <td>{{ value.Water_tree }}<span>Ltr</span></td>
+      <td>{{ value.Water_non_food }}<span>Ltr</span></td>
+    </tr>
+  </tbody>
 </table>
+<br /><br />
+
 <label class="container">Search in This Table</label>
 <input
   class="form-control container"
@@ -37,19 +50,26 @@
   [(ngModel)]="searchText"
   autocomplete="off"
   placeholder="Search By Crop Type"
-/> <br>
-<table class="table container">
+/>
+<br /><br />
+<table class="content-table container">
   <caption>
     User Irrigation Details
   </caption>
-  <th>Acres Of Land</th>
-  <th>Hours Of Water Irrigated</th>
-  <th>Type Of Crops</th>
-  <th>Litres Of Water Irrigated</th>
-  <tr *ngFor="let value of irrigation_value1 | filter:searchText">
-    <td>{{ value.Acres }}</td>
-    <td>{{ value.Hours }}</td>
-    <td>{{ value.Crops }}</td>
-    <td>{{ value.Water_Litres }}</td>
-  </tr>
+  <thead>
+    <tr>
+      <th>Acres Of Land</th>
+      <th>Hours Of Water Irrigated</th>
+      <th>Type Of Crops</th>
+      <th>Litres Of Water Irrigated</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let value of irrigation_value1 | filter: searchText">
+      <td>{{ value.Acres }}</td>
+      <td>{{ value.Hours }}</td>
+      <td>{{ value.Crops }}</td>
+      <td>{{ value.Water_Litres }}</td>
+    </tr>
+  </tbody>
 </table>

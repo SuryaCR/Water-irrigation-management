@@ -10,25 +10,28 @@ h2,h1,h3{
     font-family: 'Poppins', sans-serif;
 }
 p{
-    color:rgba(0, 0, 0, 0.705);
-    font-size: clamp(.9rem,1.125vw,1.125rem);
+    color:hsl(192, 100%, 9%);
+    font-size: clamp(1rem,1.125vw,1.125rem);
+    font-weight: 400;
 }
 
 section:nth-child(5), section:nth-child(7){
-    background-color: hsl(207, 100%, 98%);
+    background-color: hsl(0, 0%, 100%);
     padding-top: 8rem;
     padding-bottom: 8rem;
     position:relative;
 }
 
 .wrapper{
-    width:80%;
+    width:85%;
     margin:0 auto;
     display:flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     padding:3rem 0;
+    background-color: rgb(125, 194, 148);
+    border-radius: 30px;
 }
 .container, .img{
     width:50%;
@@ -80,9 +83,25 @@ nav{
     cursor: pointer;
     font-weight: 500;
 }
-.feed{
-    margin-left: 43%;
+
+button.form{
+    background-color:  hsl(127, 49%, 27%);
+    border-radius: 50px;
+    color: white;
+    padding:1em 2.5em;
+    font-size: clamp(.9rem,1.125vw,1.125rem);
+    font-weight: bold;
+    border: none;
+    transition: all 250ms ease;
+    letter-spacing: 1.5px;
 }
+
+button.form:hover{
+    background-color:  hsl(127, 49%, 27%);
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.418);
+}
+
 
 @media (max-width:900px){
     .container p,h2{
