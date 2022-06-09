@@ -60,7 +60,7 @@ export class LoginComponent implements OnInit {
       this.value = data;
       this.array = this.value.docs;
       this._id = this.array[0]?._id;
-      
+      localStorage.setItem("userid",this._id);
         if(data.docs.length<=0){
           this.toastr.error("Enter Valid User Name","User Doesn't Exist")
         }

@@ -129,7 +129,6 @@ export class IrrigationManageComponent implements OnInit {
            break;
         }
       },rej=>{console.log(rej)})
-
     },rej=>{
       this.toastr.error("error","Your Data Not Posted"+rej);
     });
@@ -149,4 +148,7 @@ export class IrrigationManageComponent implements OnInit {
     this.router.navigate(['/dashboard'],{queryParams:{data:this.user,data1:this.array}});
   }
 
+  reDirecting(){
+    this.router.navigate(['/dashboard'],{queryParams:{data:this.user,data1:this.array}});
+  }
 }

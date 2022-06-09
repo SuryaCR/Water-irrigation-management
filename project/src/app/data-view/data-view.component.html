@@ -1,3 +1,4 @@
+<app-header></app-header><br>
 <h1>User Data</h1>
 
 <table class="content-table container">
@@ -38,6 +39,9 @@
       <td>{{ value.Water_tree }}<span>Ltr</span></td>
       <td>{{ value.Water_non_food }}<span>Ltr</span></td>
     </tr>
+    <tr *ngIf="watermanage_value1.length == 0">
+      <td>No Records</td>
+    </tr>
   </tbody>
 </table>
 <br /><br />
@@ -70,6 +74,30 @@
       <td>{{ value.Hours }}</td>
       <td>{{ value.Crops }}</td>
       <td>{{ value.Water_Litres }}</td>
+    </tr>
+    <tr *ngIf="watermanage_value1.length == 0">
+      <td>No Records</td>
+    </tr>
+  </tbody>
+</table>
+<br><br>
+<table class="content-table container">
+  <caption>
+    Additional Info
+  </caption>
+  <thead>
+    <tr>
+      <th>Type Of Soil</th>
+      <th>Location</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let value of additional_value1">
+      <td>{{ value.Soil }}</td>
+      <td>{{ value.Location }}</td>
+    </tr>
+    <tr *ngIf="additional_value1.length == 0">
+      <td>No Records</td>
     </tr>
   </tbody>
 </table>

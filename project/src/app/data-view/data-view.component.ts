@@ -12,12 +12,17 @@ export class DataViewComponent implements OnInit {
   value:any;
   irrigation_value:any;
   watermanage_value:any;
+  additional_value:any;
   watermanage_value1: any;
   irrigation_value1: any;
+  additional_value1: any;
   irrigtion_id: any;
   watermanage_id: any;
+  additional_id: any;
   irrigation_rev:any;
   watermanage_rev:any;
+  additional_rev:any;
+
 
   searchText:any;
  
@@ -36,6 +41,7 @@ export class DataViewComponent implements OnInit {
         this.value= data;
         this.getWaterData();
         this.getIrrigationData();
+        this.getAdditionalData();
     },rej=>{
       console.log(rej);
     });
@@ -61,6 +67,19 @@ export class DataViewComponent implements OnInit {
          this.irrigation_value1 = this.irrigation_value.map((el: any)=>el.doc);
          this.irrigtion_id = this.irrigation_value1[0]._id; // getting id of Irrigation Management data
          this.irrigation_rev = this.irrigation_value1[0]._rev; // getting rev id of Irrigation Management data
+         
+    },rej=>{
+      console.log(rej);
+    })
+
+  }
+  getAdditionalData(){
+    this.api.fetchDataByType("additional_Info",this.user).subscribe(data=>{
+      this.additional_value = data;
+         this.additional_value=this.additional_value.rows
+         this.additional_value1 = this.additional_value.map((el: any)=>el.doc);
+         this.irrigtion_id = this.additional_value1[0]._id; // getting id of additional Management data
+         this.additional_rev = this.additional_value1[0]._rev; // getting rev id of additional Management data
          
     },rej=>{
       console.log(rej);

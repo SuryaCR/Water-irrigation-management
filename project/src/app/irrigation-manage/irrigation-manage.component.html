@@ -1,3 +1,5 @@
+<app-header></app-header><br>
+
 <div class="d-flex justify-content-center form">
   <form [formGroup]="formGroup">
     <h2>User Value</h2>
@@ -94,7 +96,7 @@
         >
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="reDirecting()">
           Ok
         </button>
       </div>

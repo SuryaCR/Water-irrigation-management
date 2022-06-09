@@ -24,6 +24,8 @@ export class SignupComponent implements OnInit {
   value: any;
   array: any;
   private _id: any;
+  sample: any;
+  temp: any;
   
   constructor(private fb: FormBuilder,public api:DatabaseService,private router:Router,private toastr:ToastrService) {
     this.formGroup = this.fb.group({
@@ -58,17 +60,26 @@ export class SignupComponent implements OnInit {
 
   addUserData(){
 
-    this.api.addUser(this.formGroup.value).subscribe(res=>{
-      console.log("Your data was posted successfully!"+res);
-      this.toastr.success("success","Please Log In");
-      this.router.navigate(['/login']);
-
+    this.api.emailDuplication(this.formGroup.value.email,"user").subscribe(response=>{
+      this.sample = response
+      this.temp = this.sample.docs.length
+      console.log(this.temp);
+      if(this.temp ==0){
+        this.api.addUser(this.formGroup.value).subscribe(res=>{
+          console.log("Your data was posted successfully!"+res);
+          this.toastr.success("success","Please Log In");
+          this.router.navigate(['/login']);
+    
+        },rej=>{
+          console.log("Can not post data"+rej);
+        });
+      }
+      else{
+        this.toastr.error("error","Email Already Exist");
+      }
     },rej=>{
-      console.log("Can not post data"+rej);
-    });
-
-
-
+      console.log(rej);
+    })
   }
 
 }

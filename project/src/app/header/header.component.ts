@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {ToastrService} from 'ngx-toastr'
+import { Router } from '@angular/router';
+import {NgxSpinnerService} from 'ngx-spinner';
+
 
 @Component({
   selector: 'app-header',
@@ -8,17 +11,40 @@ import {ToastrService} from 'ngx-toastr'
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private toastr:ToastrService) { console.log();}
+  value:any;
+  typeSelected:string;
 
+
+  constructor(private toastr:ToastrService,private router:Router,private spinner:NgxSpinnerService) { 
+    this.typeSelected = 'ball-fussion'; 
+  }
+
+  public showSpinner():void {
+    this.spinner.show();
+    
+
+    setTimeout(() => {
+    this.spinner.hide();
+    this.value = localStorage.getItem('userid');
+    this.router.navigate(['/dataview'],{queryParams:{data:this.value}});
+   },2000);
+    
+}
 
   ngOnInit(): void {
     console.log();
   }
-  pleaseLogin(){
-    this.toastr.error("","Pleae Login");
+  watermanage(){
+    this.value = localStorage.getItem('userid');
+    this.router.navigate(['/watermanage'],{queryParams:{data:this.value}})
+  }
+  irrigation(){
+    this.value = localStorage.getItem('userid');
+    this.router.navigate(['/irrigation'],{queryParams:{data:this.value}})
   }
   logout(){
     this.toastr.success("success","You Logged Out");
+    localStorage.clear();
   }
 
 }

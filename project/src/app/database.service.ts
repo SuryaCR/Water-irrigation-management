@@ -131,4 +131,17 @@ export class DatabaseService {
     return this.http.post<any>(url,data,this.httpOptions);
   }
 
+    
+emailDuplication(email: string,type: string) {
+  let url = this.url +this.dbName+'/_find'
+  let loginData = {
+    selector: {
+      type: type,
+      email: email,
+    },
+    fields: ["_id", "firstName", "email"]
+  };
+  return this.http.post(url, loginData, this.httpOptions)
+}
+
 }

@@ -3,11 +3,11 @@
     <div class="dropdown">
       <button class="dropbtn">Services</button>
       <div class="dropdown-content">
-        <a routerLink="/login" (click)="pleaseLogin()">Water Management</a>
-        <a routerLink="/login" (click)="pleaseLogin()">Irrigation Management</a>
-        <a routerLink="/login" (click)="pleaseLogin()">User Data</a>
+        <a (click)="watermanage()">Water Management</a>
+        <a (click)="irrigation()">Irrigation Management</a>
+        <a (click)="showSpinner()">User Data</a>
       </div>
     </div>
     <a routerLink="/about"><strong>About Us</strong></a>
-    <a routerLink="/login" (click)="logout()"><strong>Log Out</strong></a>
+    <a routerLink="" (click)="logout()"><strong>Log Out</strong></a>
   </nav>

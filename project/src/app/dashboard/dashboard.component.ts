@@ -61,6 +61,7 @@ export class DashboardComponent implements OnInit {
 
   logout(){
     this.toastr.success("success","You Logged Out");
+    localStorage.clear();
   }
 
   additionalInfo(){
