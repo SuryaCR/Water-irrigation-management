@@ -53,7 +53,7 @@ export class IrrigationManageComponent implements OnInit {
   ngOnInit(): void {
     this.acrouter.queryParams.subscribe(res=>{
       this.user=res.data
-    })
+    },rej=>{console.log(rej)})
     this.watermanage_id = localStorage.getItem('WaterManageId');
     this.watermanage_rev = localStorage.getItem('WaterManageRev');
     this.getWaterValue();
@@ -128,7 +128,7 @@ export class IrrigationManageComponent implements OnInit {
            })
            break;
         }
-      })
+      },rej=>{console.log(rej)})
 
     },rej=>{
       this.toastr.error("error","Your Data Not Posted"+rej);

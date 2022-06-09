@@ -27,7 +27,7 @@ export class DataViewComponent implements OnInit {
   ngOnInit(): void {
     this.acrouter.queryParams.subscribe(res=>{
       this.user=res.data
-    })
+    },rej=>{console.log(rej)})
     this.getUserData();
   }
 

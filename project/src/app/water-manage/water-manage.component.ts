@@ -40,6 +40,8 @@ export class WaterManageComponent implements OnInit {
   ngOnInit(): void {
     this.acrouter.queryParams.subscribe(res=>{
       this.user=res.data
+    },rej=>{
+      console.log(rej);
     })
     console.log(this.formGroup);
   }
