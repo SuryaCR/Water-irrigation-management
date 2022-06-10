@@ -55,6 +55,7 @@ export class WaterManageComponent implements OnInit {
       localStorage.setItem('WaterManageId',this.array);
       localStorage.setItem('WaterManageRev',this.array2);
       this.toastr.success("success","Data Posted");
+      
     },rej=>{
       this.toastr.error(rej.error.reason);
 
@@ -76,7 +77,11 @@ export class WaterManageComponent implements OnInit {
     },rej=>{
       console.log(rej);
     })
+    setTimeout(() => {
+      location.reload();
+    }, 2000);
   }
+  
 
   get waters() {
     return this.formGroup.get('waters')!;

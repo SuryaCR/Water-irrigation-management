@@ -90,10 +90,15 @@ export class IrrigationManageComponent implements OnInit {
     if(this.waterLitres>0){
     localStorage.setItem('waterLitres', JSON.stringify(this.waterLitres));
     this.saveWaterData();
+    
     }
     else{
       this.toastr.error("error","Enter Value");
     }
+    setTimeout(() => {
+      location.reload();
+    }, 2000);
+    
   }
   
   saveWaterData(){
