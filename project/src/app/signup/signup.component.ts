@@ -75,7 +75,7 @@ export class SignupComponent implements OnInit {
         });
       }
       else{
-        this.toastr.error("error","Email Already Exist");
+        this.toastr.error("Please Change Email","Email Already Exist");
       }
     },rej=>{
       console.log(rej);
