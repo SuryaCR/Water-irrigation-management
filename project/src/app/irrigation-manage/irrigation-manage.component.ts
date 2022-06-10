@@ -95,9 +95,6 @@ export class IrrigationManageComponent implements OnInit {
     else{
       this.toastr.error("error","Enter Value");
     }
-    setTimeout(() => {
-      location.reload();
-    }, 2000);
     
   }
   
@@ -154,6 +151,9 @@ export class IrrigationManageComponent implements OnInit {
   }
 
   reDirecting(){
+    setTimeout(() => {
+      location.reload();
+    }, 2000);
     this.router.navigate(['/dashboard'],{queryParams:{data:this.user,data1:this.array}});
   }
 }
