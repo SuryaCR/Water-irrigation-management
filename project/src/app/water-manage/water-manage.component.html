@@ -65,6 +65,23 @@
         </span>
       </div>
     </div>
+    <br>
+    <div class="form-group">
+      <label for="date">Date</label>
+      <input
+      type="date"
+        id="date"
+        class="form-control"
+        formControlName="date"
+        placeholder="Select Date"
+        required
+      />
+      <div class="help-block text-danger" *ngIf="date.dirty">
+        <span *ngIf="date.errors?.required">
+          Date is REQUIRED!!!
+        </span>
+      </div>
+    </div>
     <br />
     <div class="d-flex justify-content-center">
       <button class="btn btn-primary" (click)="dashboard()">Back</button>&nbsp;<button class="btn btn-primary" [disabled]="!formGroup.valid">Save</button>

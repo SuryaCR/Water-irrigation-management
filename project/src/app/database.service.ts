@@ -32,6 +32,7 @@ export class DatabaseService {
       "Water_food":formdata['waters'],
       "Water_tree":formdata['waters_tree'],
       "Water_non_food":formdata['waters_non'],
+      "Date":formdata['date'],
       "type":"watermanage",
       "user":id
     }
@@ -96,6 +97,7 @@ export class DatabaseService {
       "Water_food":waterData,
       "Water_tree":formValue.Water_tree,
       "Water_non_food":formValue.Water_non_food,
+      "Date":formValue.date,
       "type":"watermanage",
       "user":user,
     }
@@ -110,6 +112,7 @@ export class DatabaseService {
       "Water_food":formValue.Water_food,
       "Water_tree":waterData,
       "Water_non_food":formValue.Water_non_food,
+      "Date":formValue.date,
       "type":"watermanage",
       "user":user,
     }
@@ -124,6 +127,7 @@ export class DatabaseService {
       "Water_food":formValue.Water_food,
       "Water_tree":formValue.Water_tree,
       "Water_non_food":waterData,
+      "Date":formValue.date,
       "type":"watermanage",
       "user":user,
     }

@@ -19,6 +19,7 @@ export class WaterManageComponent implements OnInit {
     waters: '',
     waters_tree:'',
     waters_non:'',
+    date:''
   };
   user: any;
   value: any;
@@ -34,6 +35,7 @@ export class WaterManageComponent implements OnInit {
       waters: [this.record.waters,Validators.required],
       waters_tree: [this.record.waters_tree,Validators.required],
       waters_non: [this.record.waters_non,Validators.required],
+      date:[this.record.date,Validators.required]
     });
   }
 
@@ -84,6 +86,9 @@ export class WaterManageComponent implements OnInit {
   }
   get waters_non(){
     return this.formGroup.get('waters_non')!;
+  }
+  get date(){
+    return this.formGroup.get('date')!;
   }
 
   dashboard(){

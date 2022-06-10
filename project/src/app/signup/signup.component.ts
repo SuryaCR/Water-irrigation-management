@@ -67,7 +67,7 @@ export class SignupComponent implements OnInit {
       if(this.temp ==0){
         this.api.addUser(this.formGroup.value).subscribe(res=>{
           console.log("Your data was posted successfully!"+res);
-          this.toastr.success("success","Please Log In");
+          this.toastr.success("Please Log In","Regitered Successfully");
           this.router.navigate(['/login']);
     
         },rej=>{
