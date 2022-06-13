@@ -14,10 +14,10 @@
     </tr>
   </thead>
   <tr class="active-row">
-    <td>{{ value.firstName }}</td>
-    <td>{{ value.lastName }}</td>
-    <td>{{ value.email }}</td>
-    <td>{{ value.mobile }}</td>
+    <td>{{ userValue.firstName }}</td>
+    <td>{{ userValue.lastName }}</td>
+    <td>{{ userValue.email }}</td>
+    <td>{{ userValue.mobile }}</td>
   </tr>
 </table>
 <br /><br />
@@ -28,15 +28,21 @@
   </caption>
   <thead>
     <tr>
-      <th>Litres Of Water for Food Crops</th>
-      <th>Litres Of Water for Trees</th>
-      <th>Litres Of Water for Non-Food Crops</th>
+      <th>Total Litres Of Water for Food Crops</th>
+      <th>Water Used for Food Crops</th>
+      <th>Total Litres Of Water for Trees</th>
+      <th>Water Used for Trees</th>
+      <th>Total Litres Of Water for Non-Food Crops</th>
+      <th>Water Used for Non-Food Crops</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let value of watermanage_value1">
+      <td>{{ foodCrop }}<span>Ltr</span></td>
       <td>{{ value.Water_food }}<span>Ltr</span></td>
+      <td>{{ nonFoodCrop }}<span>Ltr</span></td>
       <td>{{ value.Water_tree }}<span>Ltr</span></td>
+      <td>{{ trees }}<span>Ltr</span></td>
       <td>{{ value.Water_non_food }}<span>Ltr</span></td>
     </tr>
     <tr *ngIf="watermanage_value1.length == 0">

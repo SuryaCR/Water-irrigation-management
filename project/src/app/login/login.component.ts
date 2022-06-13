@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
   password: any;
   type: any;
   id: any;
-  value: any;
+  userValue: any;
   array: any;
   private _id: any;
   typeSelected: string;
@@ -57,8 +57,8 @@ export class LoginComponent implements OnInit {
     this.password = formValue.password;
     this.api.loginUser(this.email).subscribe(data => {
       console.log(data);
-      this.value = data;
-      this.array = this.value.docs;
+      this.userValue = data;
+      this.array = this.userValue.docs;
       this._id = this.array[0]?._id;
       localStorage.setItem("userid",this._id);
         if(data.docs.length<=0){

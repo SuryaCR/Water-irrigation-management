@@ -20,11 +20,7 @@ export class SignupComponent implements OnInit {
     mobile: '', 
     type:'user'
   };
-  customer:any;
-  value: any;
-  array: any;
-  private _id: any;
-  sample: any;
+  userValue: any;
   temp: any;
   
   constructor(private fb: FormBuilder,public api:DatabaseService,private router:Router,private toastr:ToastrService) {
@@ -61,8 +57,8 @@ export class SignupComponent implements OnInit {
   addUserData(){
 
     this.api.emailDuplication(this.formGroup.value.email,"user").subscribe(response=>{
-      this.sample = response
-      this.temp = this.sample.docs.length
+      this.userValue = response
+      this.temp = this.userValue.docs.length
       console.log(this.temp);
       if(this.temp ==0){
         this.api.addUser(this.formGroup.value).subscribe(res=>{

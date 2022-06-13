@@ -22,12 +22,15 @@ export class WaterManageComponent implements OnInit {
     date:''
   };
   user: any;
-  value: any;
+  userValue: any;
   array: any;
   watermanage_value: any;
   watermanage_value1: any;
   watermanage_id: any;
   watermanage_rev: any;
+  foodCropValue:any;
+  nonFoodCropValue:any;
+  treeValue:any;
   array2: any;
 
   constructor(private api:DatabaseService,private fb:FormBuilder,private acrouter:ActivatedRoute,private toastr:ToastrService,private router:Router) { 
@@ -49,9 +52,9 @@ export class WaterManageComponent implements OnInit {
   }
   addWaterInfo(){
     this.api.addWaterData(this.formGroup.value,this.user).subscribe(res=>{
-      this.value = res;
-      this.array = this.value.id;
-      this.array2 = this.value.rev;
+      this.userValue = res;
+      this.array = this.userValue.id;
+      this.array2 = this.userValue.rev;
       localStorage.setItem('WaterManageId',this.array);
       localStorage.setItem('WaterManageRev',this.array2);
       this.toastr.success("success","Data Posted");
@@ -66,10 +69,20 @@ export class WaterManageComponent implements OnInit {
     this.api.fetchDataByType("watermanage",this.user).subscribe(data=>{
       console.log(data);
       this.watermanage_value = data;
+      console.log(this.watermanage_value);
          this.watermanage_value=this.watermanage_value.rows
          this.watermanage_value1 = this.watermanage_value.map((el: any)=>el.doc);
          this.watermanage_id = this.watermanage_value1[0]._id; // getting id of Water Management data
          this.watermanage_rev = this.watermanage_value1[0]._rev; // getting rev id of Water Management data
+
+         this.foodCropValue = this.watermanage_value1[0].Water_food;
+         this.nonFoodCropValue = this.watermanage_value1[0].Water_non_food;
+         this.treeValue = this.watermanage_value1[0].Water_tree;
+
+         localStorage.setItem("foodCropValue",this.foodCropValue)
+         localStorage.setItem("nonFoodCropValue",this.nonFoodCropValue)
+         localStorage.setItem("treeValue",this.treeValue)
+
          console.log(this.watermanage_id);
          console.log(this.watermanage_rev);
          localStorage.setItem("water_id",this.watermanage_id);
@@ -77,9 +90,6 @@ export class WaterManageComponent implements OnInit {
     },rej=>{
       console.log(rej);
     })
-    setTimeout(() => {
-      location.reload();
-    }, 2000);
   }
   
 

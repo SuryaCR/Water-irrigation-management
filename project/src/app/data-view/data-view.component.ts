@@ -9,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class DataViewComponent implements OnInit {
   user: any;
-  value:any;
+  userValue:any;
   irrigation_value:any;
   watermanage_value:any;
   additional_value:any;
@@ -25,6 +25,9 @@ export class DataViewComponent implements OnInit {
 
 
   searchText:any;
+  foodCrop: any;
+  nonFoodCrop: any;
+  trees: any;
  
   constructor(private api:DatabaseService,private acrouter:ActivatedRoute) {
    }
@@ -34,11 +37,14 @@ export class DataViewComponent implements OnInit {
       this.user=res.data
     },rej=>{console.log(rej)})
     this.getUserData();
+    this.foodCrop = localStorage.getItem('foodCropValue');
+    this.nonFoodCrop = localStorage.getItem('nonFoodCropValue');
+    this.trees = localStorage.getItem('treeValue');
   }
 
   getUserData(){
     this.api.getUserDataById(this.user).subscribe(data=>{
-        this.value= data;
+        this.userValue= data;
         this.getWaterData();
         this.getIrrigationData();
         this.getAdditionalData();

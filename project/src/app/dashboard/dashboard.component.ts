@@ -16,10 +16,10 @@ export class DashboardComponent implements OnInit {
   alldata:any;
   object:any=[];
   user: any;
-  value: any;
+  userValue: any;
   typeSelected:string;
-  value5: any;
-  array: any;
+  additionalValue: any;
+  irrigationId: any;
   
   constructor(private acrouter:ActivatedRoute,private router:Router,private api:DatabaseService,private fb:FormBuilder,private toastr:ToastrService,private spinner:NgxSpinnerService) {
     this.typeSelected = 'ball-fussion'; 
@@ -40,7 +40,7 @@ export class DashboardComponent implements OnInit {
       this.user=res.data
     },rej=>{console.log(rej)})
     this.acrouter.queryParams.subscribe(res1=>{
-      this.array = res1.data1
+      this.irrigationId = res1.data1
     },rej=>{console.log(rej)})
     this.getUserData();
   }
@@ -53,7 +53,7 @@ export class DashboardComponent implements OnInit {
 
   getUserData(){
     this.api.getUserDataById(this.user).subscribe(data=>{
-        this.value= data;
+        this.userValue= data;
     },rej=>{
       console.log(rej);
     });
@@ -66,12 +66,12 @@ export class DashboardComponent implements OnInit {
 
   additionalInfo(){
     this.api.fetchDataByType("additional_Info",this.user).subscribe(response4=>{
-      this.value5 = response4;
-      console.log(this.value5);
-      console.log(this.value5.rows.length);
-      if(this.value5.rows.length < 1){
-        this.router.navigate(['additionalinfo'],{queryParams:{data:this.array,data1:this.user}})
-        localStorage.setItem('Irrigationvalue',this.array);
+      this.additionalValue = response4;
+      console.log(this.additionalValue);
+      console.log(this.additionalValue.rows.length);
+      if(this.additionalValue.rows.length < 1){
+        this.router.navigate(['additionalinfo'],{queryParams:{data:this.irrigationId,data1:this.user}})
+        localStorage.setItem('Irrigationvalue',this.irrigationId);
       }
       else{
         this.toastr.warning("Data Exist","You already entered additional data");

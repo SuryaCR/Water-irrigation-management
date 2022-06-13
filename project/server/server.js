@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const dbconnection = require('./db');
 const exp = express();
+exp.disable("x-powered-by");
 const port = 8000;
 
 
@@ -17,7 +18,7 @@ exp.get('/getdata/:id', (req, res) => {
              "email": req.params.id
         }
     }
-    dbconnection.fresher.find(object).then((data => {
+    dbconnection.nanoDatabaseName.find(object).then((data => {
         console.log("firstname", data);
         res.json(data);
     }),).catch((function (err){
