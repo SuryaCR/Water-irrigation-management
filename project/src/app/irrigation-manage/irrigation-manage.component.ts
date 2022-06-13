@@ -25,22 +25,21 @@ export class IrrigationManageComponent implements OnInit {
   crops1:any;
   waterLitres:any;
 
-  value: any;
+  userValue: any;
   array: any;
   private id: any;
   user: any;
 
   watermanage_id:any;
   watermanage_rev:any;
-  value1: any;
-  value2:any;
+  updateValue1: any;
+  updateValue2:any;
   updatedData: any;
-  waters: any;
-  value3: any;
-  value4:any;
+  watersValue: any;
+  updateValue3: any;
+  updateValue4:any;
   array1: any;
   array2: any;
-  value5: any;
 
   constructor(private fb: FormBuilder,private calc:CalculationService,private api:DatabaseService,private router:Router,private acrouter:ActivatedRoute,private toastr:ToastrService) { 
     this.formGroup = this.fb.group({
@@ -101,31 +100,31 @@ export class IrrigationManageComponent implements OnInit {
   saveWaterData(){
     this.api.addIrrigationData(this.formGroup.value,this.user).subscribe(res=>{
       this.toastr.success("success","Your Data Posted");
-      this.value = res;
-      this.array = this.value.id;
+      this.userValue = res;
+      this.array = this.userValue.id;
       this.api.getUserDataById(this.array).subscribe(response=>{
         this.array1 = response;
         this.array2 = this.array1.Crops;
-        this.waters = localStorage.getItem('waterLitres');
+        this.watersValue = localStorage.getItem('waterLitres');
         switch(this.array2){
           case 'Food-Crops':
-           this.value2 = this.value1.Water_food;
-           this.updatedData = this.value2-this.waters;
-           this.api.updateWaterData(this.watermanage_id,this.value1,this.user,this.updatedData).subscribe(response1=>{
+           this.updateValue2 = this.updateValue1.Water_food;
+           this.updatedData = this.updateValue2-this.watersValue;
+           this.api.updateWaterData(this.watermanage_id,this.updateValue1,this.user,this.updatedData).subscribe(response1=>{
              console.log(response1);
            })
            break;
           case 'Trees':
-           this.value3 = this.value1.Water_tree;
-           this.updatedData = this.value3-this.waters;
-           this.api.updateWaterTreeData(this.watermanage_id,this.value1,this.user,this.updatedData).subscribe(response2=>{
+           this.updateValue3 = this.updateValue1.Water_tree;
+           this.updatedData = this.updateValue3-this.watersValue;
+           this.api.updateWaterTreeData(this.watermanage_id,this.updateValue1,this.user,this.updatedData).subscribe(response2=>{
              console.log(response2);
            })
            break;
           case 'Non-Food Crops':
-           this.value4 = this.value1.Water_non_food;
-           this.updatedData = this.value4-this.waters;
-           this.api.updateWaterNonData(this.watermanage_id,this.value1,this.user,this.updatedData).subscribe(response3=>{
+           this.updateValue4 = this.updateValue1.Water_non_food;
+           this.updatedData = this.updateValue4-this.watersValue;
+           this.api.updateWaterNonData(this.watermanage_id,this.updateValue1,this.user,this.updatedData).subscribe(response3=>{
              console.log(response3);
            })
            break;
@@ -140,7 +139,7 @@ export class IrrigationManageComponent implements OnInit {
   getWaterValue(){
     this.api.getUserDataById(this.watermanage_id).subscribe(res=>{
       console.log(res);
-      this.value1 = res; 
+      this.updateValue1 = res; 
     },rej=>{
       console.log(rej);
     });

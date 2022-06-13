@@ -8,11 +8,7 @@ h2{
     text-align: center;
 
 }
-form{
-   
-    margin-top: 20px;
-    width: 40%;
-}
+
 label{
     font-weight: bold;
     font-size: medium;
@@ -25,12 +21,12 @@ button{
     width: 40%;
 }
 input{
-    width: 60%;
+    width: 100%;
     display: flex;
     justify-content: center;
 }
 select{
-    width: 60%;
+    width: 100%;
     display: flex;
     justify-content: center;
 }
