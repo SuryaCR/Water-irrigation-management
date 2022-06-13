@@ -25,7 +25,6 @@ export class HeaderComponent implements OnInit {
 
     setTimeout(() => {
     this.spinner.hide();
-    this.value = localStorage.getItem('userid');
     this.router.navigate(['/dataview'],{queryParams:{data:this.value}});
    },2000);
     
@@ -33,13 +32,12 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     console.log();
+    this.value = localStorage.getItem('userid');
   }
   watermanage(){
-    this.value = localStorage.getItem('userid');
     this.router.navigate(['/watermanage'],{queryParams:{data:this.value}})
   }
   irrigation(){
-    this.value = localStorage.getItem('userid');
     this.router.navigate(['/irrigation'],{queryParams:{data:this.value}})
   }
   logout(){
