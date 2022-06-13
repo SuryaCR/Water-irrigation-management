@@ -37,9 +37,6 @@ export class DataViewComponent implements OnInit {
       this.user=res.data
     },rej=>{console.log(rej)})
     this.getUserData();
-    this.foodCrop = localStorage.getItem('foodCropValue');
-    this.nonFoodCrop = localStorage.getItem('nonFoodCropValue');
-    this.trees = localStorage.getItem('treeValue');
   }
 
   getUserData(){

@@ -13,6 +13,9 @@ label{
     font-weight: bold;
     font-size: medium;
 }
+form{
+    width: 30%;
+}
 .form-group{
     /* display: flex; */
     justify-content: center;

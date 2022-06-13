@@ -38,12 +38,12 @@
   </thead>
   <tbody>
     <tr *ngFor="let value of watermanage_value1">
-      <td>{{ foodCrop }}<span>Ltr</span></td>
       <td>{{ value.Water_food }}<span>Ltr</span></td>
-      <td>{{ nonFoodCrop }}<span>Ltr</span></td>
+      <td>{{ value.Remain_food_water }}<span>Ltr</span></td>
       <td>{{ value.Water_tree }}<span>Ltr</span></td>
-      <td>{{ trees }}<span>Ltr</span></td>
+      <td>{{ value.Remain_tree_water }}<span>Ltr</span></td>
       <td>{{ value.Water_non_food }}<span>Ltr</span></td>
+      <td>{{ value.Remain_non_food_water }}<span>Ltr</span></td>
     </tr>
     <tr *ngIf="watermanage_value1.length == 0">
       <td>No Records</td>

@@ -28,9 +28,6 @@ export class WaterManageComponent implements OnInit {
   watermanage_value1: any;
   watermanage_id: any;
   watermanage_rev: any;
-  foodCropValue:any;
-  nonFoodCropValue:any;
-  treeValue:any;
   array2: any;
 
   constructor(private api:DatabaseService,private fb:FormBuilder,private acrouter:ActivatedRoute,private toastr:ToastrService,private router:Router) { 
@@ -74,14 +71,6 @@ export class WaterManageComponent implements OnInit {
          this.watermanage_value1 = this.watermanage_value.map((el: any)=>el.doc);
          this.watermanage_id = this.watermanage_value1[0]._id; // getting id of Water Management data
          this.watermanage_rev = this.watermanage_value1[0]._rev; // getting rev id of Water Management data
-
-         this.foodCropValue = this.watermanage_value1[0].Water_food;
-         this.nonFoodCropValue = this.watermanage_value1[0].Water_non_food;
-         this.treeValue = this.watermanage_value1[0].Water_tree;
-
-         localStorage.setItem("foodCropValue",this.foodCropValue)
-         localStorage.setItem("nonFoodCropValue",this.nonFoodCropValue)
-         localStorage.setItem("treeValue",this.treeValue)
 
          console.log(this.watermanage_id);
          console.log(this.watermanage_rev);

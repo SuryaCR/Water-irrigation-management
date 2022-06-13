@@ -1,3 +1,4 @@
+
 a{
     color: white;
     text-decoration: none;
@@ -12,6 +13,9 @@ h2{
 label{
     font-weight: bold;
     font-size: medium;
+}
+form{
+    width: 30%;
 }
 .form-group{
     /* display: flex; */
