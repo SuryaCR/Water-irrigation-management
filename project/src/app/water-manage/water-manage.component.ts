@@ -58,12 +58,12 @@ export class WaterManageComponent implements OnInit {
       localStorage.setItem('WaterManageId',this.array);
       localStorage.setItem('WaterManageRev',this.array2);
       this.toastr.success("success","Data Posted");
+      this.getWaterData();
       
     },rej=>{
       this.toastr.error(rej.error.reason);
 
     });
-   this.getWaterData();
   }
   getWaterData(){
     this.api.fetchDataByType("watermanage",this.user).subscribe(data=>{
